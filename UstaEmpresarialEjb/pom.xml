@@ -8,9 +8,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>ejb</packaging>
 
-	<name>facturacion-ejb</name>
+	<name>seguridad-ejb</name>
 
-	<properties>
+<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -40,20 +40,10 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			 <groupId>facturacion</groupId>
-  			<artifactId>facturacionModelo</artifactId>
+			 <groupId>UstaEmpresarial</groupId>
+  			<artifactId>UstaEmpresarialSeguridadModelo</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>UstaEmpresarial</groupId>
-  			<artifactId>UstaEmpresarialParientesModelo</artifactId>
-  			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>UstaEmpresarial</groupId>
-  			<artifactId>UstaEmpresarialSeguridadModelo</artifactId>
-  			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
@@ -80,3 +70,5 @@
 	</build>
 
 </project>
+
+		
