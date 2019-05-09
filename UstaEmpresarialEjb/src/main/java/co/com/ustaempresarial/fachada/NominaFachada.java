@@ -52,5 +52,11 @@ public interface NominaFachada {
 	 */
 
 	public List<Nomina> buscarNominaPorNombre(String nombre) throws Exception;
+	
+	/**
+	 * 
+	 */
+	
+	
 
 }
