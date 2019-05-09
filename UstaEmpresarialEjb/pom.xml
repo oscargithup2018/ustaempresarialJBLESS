@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -8,9 +9,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>ejb</packaging>
 
-	<name>seguridad-ejb</name>
+	<name>facturacion-ejb</name>
 
-<properties>
+	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -40,10 +41,20 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			 <groupId>UstaEmpresarial</groupId>
-  			<artifactId>UstaEmpresarialSeguridadModelo</artifactId>
+			<groupId>facturacion</groupId>
+			<artifactId>facturacionModelo</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>UstaEmpresarial</groupId>
+			<artifactId>UstaEmpresarialParientesModelo</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>UstaEmpresarialNominaModelo</groupId>
+			<artifactId>UstaEmpresarialNominaModelo</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
@@ -70,5 +81,3 @@
 	</build>
 
 </project>
-
-		

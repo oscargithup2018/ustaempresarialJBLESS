@@ -1,9 +1,8 @@
 package co.com.ustaempresarial.fachada;
 
-import co.com.ustaempresarial.seguridad.modelo.Usuario;
-
 import javax.ejb.Remote;
 
+import co.com.facturacion.modelo.UsuarioLogin;
 
 @Remote
 public interface AutenticacionFachada{
@@ -15,7 +14,7 @@ public interface AutenticacionFachada{
 	 * @return
 	 * @throws Exception
 	 */
-	public Usuario consultarUsuario(String us, String clave) throws Exception;
+	public UsuarioLogin consultarUsuario(String us,String clave) throws Exception;
 	
 
 }

@@ -7,6 +7,34 @@
 		transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jboss/env/jdbc/facturacion</jta-data-source>
+		<mapping-file>META-INF/facturacion-orm.xml</mapping-file>
+		<class>co.com.facturacion.modelo.CategoriaProducto</class>
+		<class>co.com.facturacion.modelo.Cliente</class>
+		<class>co.com.facturacion.modelo.Producto</class>
+		<class>co.com.facturacion.modelo.ProductoStock</class>
+		<class>co.com.facturacion.modelo.Proveedor</class>
+		<class>co.com.facturacion.modelo.ProveedorProducto</class>
+		<class>co.com.facturacion.modelo.ProveedorProductoPK</class>
+		<class>co.com.facturacion.modelo.UsuarioLogin</class>
+		<class>co.com.facturacion.modelo.Venta</class>
+		<class>co.com.facturacion.modelo.VentaDetalle</class>
+		<class>co.com.facturacion.modelo.VentaDetallePK</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+		<properties>
+			<property name="hibernate.connection.driver_class"
+				value="org.postgresql.Driver" />
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.PostgreSQL82Dialect" />
+			<property name="hibernate.show_sql" value="true" />
+			<!-- <property name="hibernate.hbm2ddl.auto" value="update" /> -->
+		</properties>
+	</persistence-unit>
+	<persistence-unit name="UstaEmpresarialParientes" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:jboss/env/jdbc/familia</jta-data-source>
+		<mapping-file>META-INF/familia-orm.xml</mapping-file>
+			<class>co.com.UstaEmpresarial.familia.modelo.Pariente</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
 		<properties>
@@ -19,23 +47,6 @@
 		</properties>
 	</persistence-unit>
 	<persistence-unit name="UstaEmpresarialParientes"
-		transaction-type="JTA">
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<jta-data-source>java:jboss/env/jdbc/familia</jta-data-source>
-		<mapping-file>META-INF/familia-orm.xml</mapping-file>
-		<class>co.com.UstaEmpresarial.familia.modelo.Pariente</class>
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
-		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
-		<properties>
-			<property name="hibernate.connection.driver_class"
-				value="org.postgresql.Driver" />
-			<property name="hibernate.dialect"
-				value="org.hibernate.dialect.PostgreSQL82Dialect" />
-			<property name="hibernate.show_sql" value="true" />
-			<!-- <property name="hibernate.hbm2ddl.auto" value="update" /> -->
-		</properties>
-	</persistence-unit>
-	<persistence-unit name="UstaEmpresarialSeguridad"
 		transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jboss/env/jdbc/seguridad</jta-data-source>
@@ -56,6 +67,7 @@
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.PostgreSQL82Dialect" />
 			<property name="hibernate.show_sql" value="true" />
+			<!-- <property name="hibernate.hbm2ddl.auto" value="update" /> -->
 		</properties>
 	</persistence-unit>
 </persistence>

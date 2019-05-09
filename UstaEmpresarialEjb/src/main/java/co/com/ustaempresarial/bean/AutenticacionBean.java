@@ -1,5 +1,7 @@
 package co.com.ustaempresarial.bean;
 
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -8,8 +10,8 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import co.com.facturacion.modelo.UsuarioLogin;
 import co.com.ustaempresarial.fachada.AutenticacionFachada;
-import co.com.ustaempresarial.seguridad.modelo.Usuario;
 
 
 @Stateless
@@ -28,19 +30,19 @@ public class AutenticacionBean implements AutenticacionFachada{
 	 * @see co.com.facturacion.fachada.AutenticacionFachada#consultarUsuario(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public Usuario consultarUsuario(String us, String clave) throws Exception {
-		Usuario loginUsuario = new Usuario();
-		 Query q = em.createNamedQuery(Usuario.TRAER_USUARIO);
+	public UsuarioLogin consultarUsuario(String us, String clave) throws Exception {
+		UsuarioLogin login = new UsuarioLogin();
+		 Query q = em.createNamedQuery(UsuarioLogin.TRAER_USUARIO);
 		 q.setParameter("usua", us);
 		 q.setParameter("pass", clave);
 		
 		try {
-			loginUsuario = (Usuario) q.getSingleResult();
+			login = (UsuarioLogin) q.getSingleResult();
 		} catch (NoResultException  e) {
-			loginUsuario = null;
+			login = null;
 		}
 	
-		return loginUsuario;
+		return login;
 	}
 
 //	@Override

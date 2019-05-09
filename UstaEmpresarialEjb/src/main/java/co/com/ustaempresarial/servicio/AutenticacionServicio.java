@@ -1,24 +1,28 @@
 package co.com.ustaempresarial.servicio;
 
-import co.com.ustaempresarial.fachada.AutenticacionFachada;
-import co.com.ustaempresarial.seguridad.modelo.Usuario;
+import javax.ejb.EJB;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 
-import javax.ejb.*;
+import co.com.facturacion.modelo.UsuarioLogin;
+import co.com.ustaempresarial.fachada.AutenticacionFachada;
 
 
 @Stateless
 @LocalBean
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-public class AutenticacionServicio {
+public class AutenticacionServicio{
 
-    @EJB
-    AutenticacionFachada autenticacionBean;
+	@EJB
+	AutenticacionFachada autenticacionBean;
 
-    public AutenticacionServicio() {
-        super();
-    }
-
-    public Usuario consultarUsuario(String us, String clave) throws Exception {
-        return autenticacionBean.consultarUsuario(us, clave);
-    }
+	public AutenticacionServicio() {
+		super();
+	}
+	
+	public UsuarioLogin consultarUsuario(String us, String clave) throws Exception {
+		return autenticacionBean.consultarUsuario(us, clave);
+	}
 }
