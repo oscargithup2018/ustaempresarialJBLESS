@@ -39,6 +39,10 @@
 							<artifactId>UstaEmpresarialEjb</artifactId>
 						</ejbModule>
 						<jarModule>
+							<groupId>UstaEmpresarial</groupId>
+							<artifactId>NominaModelo</artifactId>
+						</jarModule>
+						<jarModule>
 							<groupId>facturacion</groupId>
 							<artifactId>facturacionModelo</artifactId>
 						</jarModule>
@@ -70,6 +74,11 @@
 		<dependency>
 			<groupId>facturacion</groupId>
 			<artifactId>facturacionModelo</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>UstaEmpresarial</groupId>
+			<artifactId>NominaModelo</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>

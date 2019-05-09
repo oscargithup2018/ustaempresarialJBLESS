@@ -6,6 +6,7 @@ import javax.ejb.Remote;
 
 import co.com.UstaEmpresarial.nomina.modelo.Nomina;
 
+
 @Remote
 public interface NominaFachada {
 
