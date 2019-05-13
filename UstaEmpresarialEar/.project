@@ -7,7 +7,6 @@
 		<project>UstaEmpresarialEjb</project>
 		<project>UstaEmpresarialWeb</project>
 		<project>SeguridadModelo</project>
-		<project>NominaModelo</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

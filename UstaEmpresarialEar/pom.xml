@@ -42,10 +42,6 @@
 							<groupId>UstaEmpresarial</groupId>
 							<artifactId>NominaModelo</artifactId>
 						</jarModule>
-						<jarModule>
-							<groupId>facturacion</groupId>
-							<artifactId>facturacionModelo</artifactId>
-						</jarModule>
 						<webModule>
 							<groupId>UstaEmpresarial</groupId>
 							<artifactId>UstaEmpresarialWeb</artifactId>
@@ -72,18 +68,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>facturacion</groupId>
-			<artifactId>facturacionModelo</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
 			<groupId>UstaEmpresarial</groupId>
 			<artifactId>NominaModelo</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>UstaEmpresarial</groupId>
-			<artifactId>SeguridadModelo</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
@@ -94,8 +80,8 @@
 		</dependency>
 		<dependency>
 			<groupId>UstaEmpresarial</groupId>
-			<artifactId>UstaEmpresarialWeb</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+    <artifactId>UstaEmpresarialWeb</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 			<type>war</type>
 		</dependency>
 	</dependencies>

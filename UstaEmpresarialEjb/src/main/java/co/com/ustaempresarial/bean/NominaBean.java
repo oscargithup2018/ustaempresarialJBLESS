@@ -1,56 +1,112 @@
 package co.com.ustaempresarial.bean;
 
-import co.com.ustaempresarial.fachada.NominaFachada;
-import modeloNomina.HojaVida;
-import modeloNomina.Nomina;
-
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import co.com.ustaempresarial.fachada.NominaFachada;
+import co.com.UstaEmpresarial.nomina.modelo.Cargo;
+import co.com.UstaEmpresarial.nomina.modelo.Nomina;
+import co.com.UstaEmpresarial.nomina.modelo.Dependencia;
+import co.com.UstaEmpresarial.nomina.modelo.HojaVida;
+import co.com.UstaEmpresarial.nomina.modelo.Contrato;
+import co.com.UstaEmpresarial.nomina.modelo.Concepto;
+import co.com.UstaEmpresarial.nomina.modelo.Periodo;
+
+
+@Stateless
+@LocalBean
+@TransactionManagement(TransactionManagementType.CONTAINER)
+
 public class NominaBean implements NominaFachada {
-    //--------------------------------------Clase Nomina-----------------------------------
+
+    @PersistenceContext(unitName = "nomina")
+    private EntityManager em;
+
+    public NominaBean() {
+
+        super();
+
+    }
     @Override
-    public List<Nomina> obtenerNominas() throws Exception {
-        return null;
+    public List<Cargo> listarCargos() throws Exception {
+
+        List<Cargo> cargos;
+
+        Query q = em.createNamedQuery(Cargo.LISTAR_CARGO);
+        cargos = q.getResultList();
+
+        return cargos;
+
     }
 
     @Override
-    public void crearNomina(Nomina nomina) throws Exception {
+    public void crearCargo(Cargo cargo) throws Exception {
 
+        if ( cargo != null ) {
+            em.persist(cargo);
+            em.flush();
+        }
     }
 
-    @Override
-    public Nomina editarNomina(Nomina nomina) throws Exception {
-        return null;
+    //@Override
+    public void editarCargo(Cargo cargos) throws Exception {
+        if ( cargos != null ) {
+            if ( cargos.getCodigo() > 0 ) {
+                em.merge(cargos);
+                em.flush();
+            }
+        }
     }
-
+    
     @Override
-    public boolean borrarNomina(int codigo) throws Exception {
+    public boolean eliminarCargo(Cargo cargos) throws Exception {
+        if ( cargos.getCodigo() > 0 ) {
+            em.remove(cargos);
+            return true;
+        }
         return false;
     }
-
     @Override
-    public List<Nomina> buscarNominaPorNombre(String nombre) throws Exception {
-        return null;
-    }
+    public List<Concepto> listarConceptos() throws Exception {
 
-    //--------------------------------------Clase Nomina-----------------------------------
-    @Override
-    public HojaVida crearHojaVida(HojaVida hojaVida) throws Exception {
-        return null;
-    }
+        List<Concepto> conceptos;
 
-    @Override
-    public HojaVida modificarHojaVida(HojaVida hojaVida) throws Exception {
-        return null;
+        Query q = em.createNamedQuery(Concepto.LISTAR_CONCEPTO);
+        conceptos = q.getResultList();
+
+        return conceptos;
+
     }
 
     @Override
-    public boolean eliminarHojaVida(int codigoHojaVida) throws Exception {
-        return false;
+    public void crearConcepto(Concepto conceptos) throws Exception {
+
+        if ( conceptos != null ) {
+            em.persist(conceptos);
+            em.flush();
+        }
     }
 
-    @Override
-    public List<HojaVida> listarHojasVida() throws Exception {
-        return null;
+    //@Override
+    public void editarConcepto(Concepto conceptos) throws Exception {
+        if ( conceptos != null ) {
+            if ( conceptos.getCodigo() > 0 ) {
+                em.merge(conceptos);
+                em.flush();
+            }
+        }
     }
+   
+    
+    
+   
+
 }
