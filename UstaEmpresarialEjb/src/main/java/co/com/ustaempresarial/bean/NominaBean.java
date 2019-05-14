@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import co.com.ustaempresarial.fachada.NominaFachada;
@@ -31,9 +32,10 @@ public class NominaBean implements NominaFachada {
 	public NominaBean() {
 
 		super();
-
+/**
+ * @autor Oscar Gomez 
+ */
 	}
-
 	@Override
 	public HojaVida crearHojaVida(HojaVida hojaVida) throws Exception {
 		if (hojaVida.getDocumento() != null && !hojaVida.getDocumento().equals("")) {
@@ -78,6 +80,9 @@ public class NominaBean implements NominaFachada {
 		return hojaVida;
 	}
 
+	/**
+	 * @autor Angie Suarez
+	 */
 	@Override
 	public List<Cargo> listarCargos() throws Exception {
 
@@ -117,7 +122,9 @@ public class NominaBean implements NominaFachada {
 		}
 		return false;
 	}
-
+	/**
+	 * @autor Christian Mejia
+	 */
 	@Override
 	public List<Dependencia> traerDependencia() throws Exception {
 		List<Dependencia> dependencias = new ArrayList<Dependencia>();
@@ -164,7 +171,9 @@ public class NominaBean implements NominaFachada {
 		}
 		return flag;
 	}
-
+	/**
+	 * @autor Mario Murcia
+	 */
 	public void crearContrato(Contrato contrato) throws Exception {
 
 		if (contrato.getCodigo() != null && !contrato.getCodigo().equals("")) {
@@ -239,7 +248,9 @@ public class NominaBean implements NominaFachada {
 		p = em.find(Contrato.class, codigoContrato);
 		return p;
 	}
-
+	/**
+	 * @autor Alejandro Parra
+	 */
 	public List<Concepto> traerConcepto() throws Exception {
 		List<Concepto> conceptos = new ArrayList<Concepto>();
 		Query query = em.createNamedQuery(Concepto.FIND_ALL);
@@ -299,7 +310,7 @@ public class NominaBean implements NominaFachada {
 		return false;
 	}
 
-	public boolean editarPeriodo(Periodo per) throws Exception {
+	public void editarPeriodo(Periodo per) throws Exception {
 		if (per != null) {
 			if (per.getCodigo() > 0) {
 				em.merge(per);
@@ -307,8 +318,7 @@ public class NominaBean implements NominaFachada {
 			}
 		}
 
-        return false;
-    }
+	}
 
 	public boolean borrarPeriodo(int codigo) throws Exception {
 		Periodo periodos = buscarPorCodigoPeriodo(codigo);
@@ -325,7 +335,9 @@ public class NominaBean implements NominaFachada {
 		p = em.find(Periodo.class, codigoPeriodo);
 		return p;
 	}
-
+	/**
+	 * @autor Johan Bernal
+	 */
 	@Override
 	public void LiquidarNomina(Nomina nomina) throws Exception {
 		// TODO Auto-generated method stub
