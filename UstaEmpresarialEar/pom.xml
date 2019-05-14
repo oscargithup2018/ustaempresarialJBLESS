@@ -40,7 +40,7 @@
 						</ejbModule>
 						<jarModule>
 							<groupId>UstaEmpresarial</groupId>
-							<artifactId>NominaModelo</artifactId>
+							<artifactId>FacturacionModelo</artifactId>
 						</jarModule>
 						<webModule>
 							<groupId>UstaEmpresarial</groupId>
@@ -69,7 +69,22 @@
 	<dependencies>
 		<dependency>
 			<groupId>UstaEmpresarial</groupId>
-			<artifactId>NominaModelo</artifactId>
+			<artifactId>FacturacionModelo</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>UstaEmpresarial</groupId>
+			<artifactId>UstaEmpresarialParientesModelo</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+			<dependency>
+			<groupId>UstaEmpresarialNominaModelo</groupId>
+			<artifactId>UstaEmpresarialNominaModelo</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>UstaEmpresarial</groupId>
+			<artifactId>SeguridadModelo</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
@@ -80,8 +95,8 @@
 		</dependency>
 		<dependency>
 			<groupId>UstaEmpresarial</groupId>
-    <artifactId>UstaEmpresarialWeb</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+			<artifactId>UstaEmpresarialWeb</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 			<type>war</type>
 		</dependency>
 	</dependencies>

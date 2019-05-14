@@ -4,12 +4,42 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
 
+<named-query name="Usuario.findAll">
+		<query>
+			SELECT u 
+			FROM Usuario u
+		</query>
+	</named-query>
+	
+	<named-query name="Usuario.encontrarPorNombre">
+		<query>
+			SELECT u 
+			FROM Usuario u
+			WHERE u.nombre like '%:nombre%'
+		</query>
+	</named-query>
+
+
 	<named-query name="Usuario.TRAER_USUARIO">
 		<query>
 			SELECT u
 			FROM Usuario u
 			WHERE u.nombre = :usua
 			AND u.password = :pass
+		</query>
+	</named-query>
+
+<named-query name="RolPermiso.LISTAR_PERMISOS">
+		<query>
+			SELECT r 
+			FROM RolPermisos r
+		</query>
+	</named-query>
+	
+<named-query name="RolUsuario.find_all">
+		<query>
+			SELECT R 
+			FROM RolUsuarios R
 		</query>
 	</named-query>
 
