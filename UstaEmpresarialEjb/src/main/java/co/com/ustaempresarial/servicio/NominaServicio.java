@@ -99,11 +99,11 @@ public class NominaServicio {
     }
 
     public boolean eliminarPeriodo(int codigo) throws Exception {
-        return fachada.eliminarPeriodo(codigo);
+        return fachada.borrarPeriodo(codigo);
     }
 
     public List<Periodo> listaPeriodo() throws Exception {
-        return fachada.listaPeriodo();
+        return fachada.traerPeriodo();
     }
 
 }

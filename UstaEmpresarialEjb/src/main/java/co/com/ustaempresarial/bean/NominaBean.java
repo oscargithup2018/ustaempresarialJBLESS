@@ -8,7 +8,6 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import co.com.ustaempresarial.fachada.NominaFachada;
@@ -298,7 +297,7 @@ public class NominaBean implements NominaFachada {
 		return false;
 	}
 
-	public void editarPeriodo(Periodo per) throws Exception {
+	public boolean editarPeriodo(Periodo per) throws Exception {
 		if (per != null) {
 			if (per.getCodigo() > 0) {
 				em.merge(per);
@@ -306,7 +305,8 @@ public class NominaBean implements NominaFachada {
 			}
 		}
 
-	}
+        return false;
+    }
 
 	public boolean borrarPeriodo(int codigo) throws Exception {
 		Periodo periodos = buscarPorCodigoPeriodo(codigo);
