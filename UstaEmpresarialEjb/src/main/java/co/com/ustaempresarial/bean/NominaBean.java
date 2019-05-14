@@ -133,7 +133,7 @@ public class NominaBean implements NominaFachada {
 		}
 	}
 
-	private Dependencia buscarPorId(int codigoDependencia) throws Exception {
+	private Dependencia buscarPorCod(int codigoDependencia) throws Exception {
 		Dependencia p = new Dependencia();
 		p = em.find(Dependencia.class, codigoDependencia);
 		return p;
@@ -142,7 +142,7 @@ public class NominaBean implements NominaFachada {
 	@Override
 	public void editarDependencia(Dependencia depen) throws Exception {
 		Dependencia dep = new Dependencia();
-		dep = buscarPorId(depen.getCodigo());
+		dep = buscarPorCod(depen.getCodigo());
 		if (dep.getCodigo() > 0) {
 			em.merge(depen);
 		} else {
@@ -153,7 +153,7 @@ public class NominaBean implements NominaFachada {
 
 	@Override
 	public boolean borrarDependencia(int codigo) throws Exception {
-		Dependencia dependencias = buscarPorId(codigo);
+		Dependencia dependencias = buscarPorCod(codigo);
 		Contrato contrato = new Contrato();
 		boolean flag = false;
 		if (dependencias.getCodigo() > 0) {
