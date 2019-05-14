@@ -310,13 +310,15 @@ public class NominaBean implements NominaFachada {
 		return false;
 	}
 
-	public void editarPeriodo(Periodo per) throws Exception {
+	public boolean editarPeriodo(Periodo per) throws Exception {
 		if (per != null) {
 			if (per.getCodigo() > 0) {
 				em.merge(per);
 				em.flush();
+				return true;
 			}
 		}
+		return false;
 
 	}
 
