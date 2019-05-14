@@ -256,7 +256,7 @@ public interface NominaFachada {
      * @throws Exception
      */
 
-    public boolean conceptosLiquidadosNomina(int codigo) throws Exception;
+    public boolean conceptosLiquidadosNomina(int id) throws Exception;
 
     /**
      * sueldo*diastrabajados
@@ -266,7 +266,7 @@ public interface NominaFachada {
      * @throws Exception
      */
 
-    public boolean conceptosPagadosNomina(int codigo) throws Exception;
+    public boolean conceptosPagadosNomina(int id) throws Exception;
 
     /**
      * cuanto se pago en nomina
