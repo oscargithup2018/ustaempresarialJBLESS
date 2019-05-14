@@ -251,7 +251,7 @@ public interface NominaFachada {
     /**
      * borrarNomina
      *
-     * @param codigo
+     * @param id
      * @return
      * @throws Exception
      */
@@ -261,7 +261,7 @@ public interface NominaFachada {
     /**
      * sueldo*diastrabajados
      *
-     * @param codigo
+     * @param id
      * @return
      * @throws Exception
      */
