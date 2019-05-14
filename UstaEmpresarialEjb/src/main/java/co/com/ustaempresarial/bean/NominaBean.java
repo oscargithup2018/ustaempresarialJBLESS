@@ -150,7 +150,6 @@ public class NominaBean implements NominaFachada {
 			dep = null;
 		}
 
-		
 	}
 
 	@Override
@@ -219,7 +218,6 @@ public class NominaBean implements NominaFachada {
 		return p;
 	}
 
-	
 	public List<Concepto> traerConcepto() throws Exception {
 		List<Concepto> conceptos = new ArrayList<Concepto>();
 		Query query = em.createNamedQuery(Concepto.FIND_ALL);
@@ -233,8 +231,6 @@ public class NominaBean implements NominaFachada {
 			em.persist(con);
 		}
 	}
-
-
 
 	public Concepto editarConcepto(Concepto concep) throws Exception {
 		Concepto con = new Concepto();
@@ -258,13 +254,13 @@ public class NominaBean implements NominaFachada {
 		}
 		return flag;
 	}
-	
+
 	private Concepto buscarPorIdConcepto(int codigoConcepto) throws Exception {
 		Concepto c = new Concepto();
 		c = em.find(Concepto.class, codigoConcepto);
 		return c;
 	}
-	
+
 	public List<Periodo> traerPeriodo() throws Exception {
 		List<Periodo> periodos = new ArrayList<Periodo>();
 		Query query = em.createNamedQuery(Periodo.FIND_ALL);
@@ -281,8 +277,6 @@ public class NominaBean implements NominaFachada {
 		return false;
 	}
 
-
-
 	public void editarPeriodo(Periodo per) throws Exception {
 		if (per != null) {
 			if (per.getCodigo() > 0) {
@@ -290,10 +284,9 @@ public class NominaBean implements NominaFachada {
 				em.flush();
 			}
 		}
-	
+
 	}
 
-	
 	public boolean borrarPeriodo(int codigo) throws Exception {
 		Periodo periodos = buscarPorCodigoPeriodo(codigo);
 		boolean flag = false;
@@ -303,11 +296,48 @@ public class NominaBean implements NominaFachada {
 		}
 		return flag;
 	}
-	
+
 	private Periodo buscarPorCodigoPeriodo(int codigoPeriodo) throws Exception {
 		Periodo p = new Periodo();
 		p = em.find(Periodo.class, codigoPeriodo);
 		return p;
+	}
+
+	@Override
+	public void LiquidarNomina(Nomina nomina) throws Exception {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Nomina editarNomina(Nomina nomina) throws Exception {
+
+		Nomina nomina1 = new Nomina();
+		// nomina1 = buscarPorIdHojaVida(hojaVida.getDocumento());
+		if (nomina1 != null) {
+			em.merge(nomina);
+		} else {
+			nomina1 = null;
+		}
+		return nomina1;
+
+	}
+
+	public boolean conceptosLiquidadosNomina(int codigo) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean conceptosPagadosNomina(int codigo) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<Nomina> obtenerNominas() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

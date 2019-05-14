@@ -229,4 +229,57 @@ public interface NominaFachada {
     public boolean borrarPeriodo(int codigo) throws Exception;
 
 
+    
+    
+    
+    
+    
+    
+    
+    public List<Nomina> obtenerNominas() throws Exception;
+
+	/**
+	 * crearNomina
+	 * 
+	 * @param nomina
+	 * @throws Exception
+	 */
+	public void LiquidarNomina(Nomina nomina) throws Exception;
+
+	/**
+	 * editarNomina
+	 * 
+	 * @param nomina
+	 * @return
+	 * @throws Exception
+	 */
+	public Nomina editarNomina(Nomina nomina) throws Exception;
+
+	/**
+	 * borrarNomina
+	 * 
+	 * @param codigo
+	 * @return
+	 * @throws Exception
+	 */
+	
+	public boolean conceptosLiquidadosNomina(int codigo) throws Exception;
+	
+	/**
+	 * sueldo*diastrabajados
+	 * 
+	 * @param codigo
+	 * @return
+	 * @throws Exception
+	 */
+	
+	public boolean conceptosPagadosNomina(int codigo) throws Exception;
+	
+	/**
+	 * cuanto se pago en nomina
+	 * 
+	 * @param codigo
+	 * @return
+	 * @throws Exception
+	 */
 }
