@@ -233,11 +233,7 @@ public class NominaBean implements NominaFachada {
 			em.persist(con);
 		}
 	}
-	public void crearPeriodo(Periodo per) throws Exception {
-		if (per.getCodigo() != null && !per.getCodigo().equals("")) {
-			em.persist(per);
-		}
-	}
+
 
 
 	public Concepto editarConcepto(Concepto concep) throws Exception {
@@ -276,9 +272,17 @@ public class NominaBean implements NominaFachada {
 		return periodos;
 	}
 
-	
-	
-	
+	@Override
+	public boolean crearPeriodo(Periodo per) throws Exception {
+		if (per.getCodigo() != null && !per.getCodigo().equals("")) {
+			em.persist(per);
+			return true;
+		}
+		return false;
+	}
+
+
+
 	public void editarPeriodo(Periodo per) throws Exception {
 		if (per != null) {
 			if (per.getCodigo() > 0) {
