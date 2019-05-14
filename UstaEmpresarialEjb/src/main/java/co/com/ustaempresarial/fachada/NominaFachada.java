@@ -178,7 +178,7 @@ public interface NominaFachada {
     /**
      * Edita un cargo existente en la base de datos
      *
-     * @param  concep  editar
+     * @param concep editar
      * @throws Exception
      */
     public Concepto editarConcepto(Concepto concep) throws Exception;
@@ -195,8 +195,8 @@ public interface NominaFachada {
     //==================================================================================================================
     //-------------------------------------------------PERIODO-----------------------------------------------------
     //==================================================================================================================
+
     /**
-     *
      * @return
      * @throws Exception
      */
@@ -217,7 +217,7 @@ public interface NominaFachada {
      * @return periodo actualizado
      * @throws Exception Capturar errores posibles sobre ejecución
      */
-    public void editarPeriodo(Periodo per) throws Exception;
+    public boolean editarPeriodo(Periodo per) throws Exception;
 
     /**
      * Borra el periodo seleccionado
@@ -229,114 +229,75 @@ public interface NominaFachada {
     public boolean borrarPeriodo(int codigo) throws Exception;
 
 
-    
-    
-    
-    
-    
-    
-    
     public List<Nomina> obtenerNominas() throws Exception;
 
-	/**
-	 * crearNomina
-	 * 
-	 * @param nomina
-	 * @throws Exception
-	 */
-	public void LiquidarNomina(Nomina nomina) throws Exception;
+    /**
+     * crearNomina
+     *
+     * @param nomina
+     * @throws Exception
+     */
+    public void LiquidarNomina(Nomina nomina) throws Exception;
 
-	/**
-	 * editarNomina
-	 * 
-	 * @param nomina
-	 * @return
-	 * @throws Exception
-	 */
-	public Nomina editarNomina(Nomina nomina) throws Exception;
+    /**
+     * editarNomina
+     *
+     * @param nomina
+     * @return
+     * @throws Exception
+     */
+    public Nomina editarNomina(Nomina nomina) throws Exception;
 
-	/**
-	 * borrarNomina
-	 * 
-	 * @param codigo
-	 * @return
-	 * @throws Exception
-	 */
-	
-	public boolean conceptosLiquidadosNomina(int codigo) throws Exception;
-	
-	/**
-	 * sueldo*diastrabajados
-	 * 
-	 * @param codigo
-	 * @return
-	 * @throws Exception
-	 */
-	
-	public boolean conceptosPagadosNomina(int codigo) throws Exception;
-	
-	/**
-	 * cuanto se pago en nomina
-	 * 
-	 * @param codigo
-	 * @return
-	 * @throws Exception
-	 */
-   //==================================================================================================================
+    /**
+     * borrarNomina
+     *
+     * @param codigo
+     * @return
+     * @throws Exception
+     */
+
+    public boolean conceptosLiquidadosNomina(int codigo) throws Exception;
+
+    /**
+     * sueldo*diastrabajados
+     *
+     * @param codigo
+     * @return
+     * @throws Exception
+     */
+
+    public boolean conceptosPagadosNomina(int codigo) throws Exception;
+
+    /**
+     * cuanto se pago en nomina
+     *
+     * @param codigo
+     * @return
+     * @throws Exception
+     */
+    //==================================================================================================================
     //-------------------------------------------------contrato-----------------------------------------------------
     //==================================================================================================================
 
 
+    /**
+     * buscarContraoPorcargo
+     *
+     * @param cargo
+     * @return
+     * @throws Exception
+     */
 
-	/**
-	 * buscarContraoPorcargo
-	 * 
-	 * @param nombre
-	 * @return
-	 * @throws Exception
-	 */
+    public List<Contrato> buscarContratoPorDependencia(String cargo) throws Exception;
 
-	public List<Contrato> buscarContratoPorDependencia(String cargo) throws Exception;
-	/**
-	 * buscarContraoPordependencia
-	 * 
-	 * @param nombre
-	 * @return
-	 * @throws Exception
-	 */
+    /**
+     * buscarContraoPordependencia
+     *
+     * @param cargo
+     * @return
+     * @throws Exception
+     */
 
-	public List<Contrato> buscarContratoPorCargo(String cargo) throws Exception;
-	/**
-	 * crearContrato 
-	 * 
-	 * return
-	 */
-	public void crearContrato(Contrato contrato) throws Exception;
-	/**
-	 * modificarContrato 
-	 * 
-	 * return contrato
-	 */
-	
-	public Contrato modificarContrato(Contrato contrato) throws Exception;
-	
-	/**
-	 * eliminarContrato 
-	 * @return 
-	 * 
-	 * 
-	 */
-	public boolean eliminarContrato(int codigo ) throws Exception;
-	
-	
-	
-	/**
-	 * listarContratoAll
-	 * lista todo el contrato
-	 * 
-	 */
-	public List<Contrato> listaContratoAll() throws Exception;
-	
-
+    public List<Contrato> buscarContratoPorCargo(String cargo) throws Exception;
 
 }

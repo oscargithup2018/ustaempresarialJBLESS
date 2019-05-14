@@ -14,6 +14,8 @@ import java.util.Date;
 public class Contrato implements Serializable {
 	private static final long serialVersionUID = 1L;
 	public static final String FIND_ALL ="Contrato.Listar_contrato";
+	public static final String ENCONTRAR_POR_CARGO ="Contrato.Listar_contrato";
+	public static final String ENCONTRAR_POR_DEPENDENCIA ="Contrato.Listar_contrato";
 	private Integer codigo;
 	private Integer cargoCod;
 	private Integer dependenciaCod;

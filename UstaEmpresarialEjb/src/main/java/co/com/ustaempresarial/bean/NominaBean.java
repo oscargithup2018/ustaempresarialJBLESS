@@ -194,7 +194,18 @@ public class NominaBean implements NominaFachada {
 		}
 		return flag;
 	}
-@Override
+
+    @Override
+    public List<Contrato> listaContratoDependecia() throws Exception {
+        return null;
+    }
+
+    @Override
+    public List<Contrato> listaContratoCargo() throws Exception {
+        return null;
+    }
+
+    @Override
 	public List<Contrato> buscarContratoPorCargo(String cargo) throws Exception {
 		List<Contrato> car = new ArrayList<Contrato>();
 		Query query = em.createNamedQuery(Contrato.ENCONTRAR_POR_CARGO);
