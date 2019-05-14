@@ -81,7 +81,7 @@ public interface NominaFachada {
      * Borra la dependencia seleccionada
      *
      * @param codigo Código de la dependencia
-     * @return true: donde si borra y false donde hay error de ejecución
+     * @return true: borra si el código de la dependencia está en contrato
      * @throws Exception Exception Capturar errores posibles sobre ejecución
      */
     public boolean borrarDependencia(int codigo) throws Exception;

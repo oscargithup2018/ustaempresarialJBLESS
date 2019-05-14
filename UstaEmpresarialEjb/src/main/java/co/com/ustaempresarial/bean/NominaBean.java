@@ -154,13 +154,15 @@ public class NominaBean implements NominaFachada {
 	@Override
 	public boolean borrarDependencia(int codigo) throws Exception {
 		Dependencia dependencias = buscarPorId(codigo);
+		Contrato contrato = new Contrato();
 		boolean flag = false;
 		if (dependencias.getCodigo() > 0) {
-			em.remove(dependencias);
-			flag = true;
+			if (contrato.getDependenciaCod() == dependencias.getCodigo()) {
+				em.remove(dependencias);
+				flag = true;
+			}
 		}
 		return flag;
-
 	}
 
 	public void crearContrato(Contrato contrato) throws Exception {
