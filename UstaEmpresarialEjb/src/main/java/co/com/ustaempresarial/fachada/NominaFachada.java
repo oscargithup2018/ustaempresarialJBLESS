@@ -1,4 +1,4 @@
-package co.com.ustaempresarial.fachada;
+﻿package co.com.ustaempresarial.fachada;
 
 import co.com.UstaEmpresarial.nomina.modelo.*;
 
@@ -282,4 +282,61 @@ public interface NominaFachada {
 	 * @return
 	 * @throws Exception
 	 */
+   //==================================================================================================================
+    //-------------------------------------------------contrato-----------------------------------------------------
+    //==================================================================================================================
+
+
+
+	/**
+	 * buscarContraoPorcargo
+	 * 
+	 * @param nombre
+	 * @return
+	 * @throws Exception
+	 */
+
+	public List<Contrato> buscarContratoPorDependencia(String cargo) throws Exception;
+	/**
+	 * buscarContraoPordependencia
+	 * 
+	 * @param nombre
+	 * @return
+	 * @throws Exception
+	 */
+
+	public List<Contrato> buscarContratoPorCargo(String cargo) throws Exception;
+	/**
+	 * crearContrato 
+	 * 
+	 * return
+	 */
+	public void crearContrato(Contrato contrato) throws Exception;
+	/**
+	 * modificarContrato 
+	 * 
+	 * return contrato
+	 */
+	
+	public Contrato modificarContrato(Contrato contrato) throws Exception;
+	
+	/**
+	 * eliminarContrato 
+	 * @return 
+	 * 
+	 * 
+	 */
+	public boolean eliminarContrato(int codigo ) throws Exception;
+	
+	
+	
+	/**
+	 * listarContratoAll
+	 * lista todo el contrato
+	 * 
+	 */
+	public List<Contrato> listaContratoAll() throws Exception;
+	
+
+
 }

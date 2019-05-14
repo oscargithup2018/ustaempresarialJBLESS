@@ -194,15 +194,25 @@ public class NominaBean implements NominaFachada {
 		}
 		return flag;
 	}
-
-	public List<Contrato> listaContratoDependecia() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+@Override
+	public List<Contrato> buscarContratoPorCargo(String cargo) throws Exception {
+		List<Contrato> car = new ArrayList<Contrato>();
+		Query query = em.createNamedQuery(Contrato.ENCONTRAR_POR_CARGO);
+		if (query != null) {
+			query.setParameter("cargo", cargo);
+			car = query.getResultList();
+		}
+		return car;
 	}
-
-	public List<Contrato> listaContratoCargo() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	@Override
+	public List<Contrato> buscarContratoPorDependencia(String dependencia) throws Exception {
+		List<Contrato> car = new ArrayList<Contrato>();
+		Query query = em.createNamedQuery(Contrato.ENCONTRAR_POR_DEPENDENCIA);
+		if (query != null) {
+			query.setParameter("dependenciacod", dependencia);
+			car = query.getResultList();
+		}
+		return car;
 	}
 
 	public List<Contrato> listaContratoAll() throws Exception {
