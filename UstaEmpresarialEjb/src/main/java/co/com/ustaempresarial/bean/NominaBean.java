@@ -32,10 +32,11 @@ public class NominaBean implements NominaFachada {
 	public NominaBean() {
 
 		super();
-/**
- * @autor Oscar Gomez 
- */
+		/**
+		 * @autor Oscar Gomez
+		 */
 	}
+
 	@Override
 	public HojaVida crearHojaVida(HojaVida hojaVida) throws Exception {
 		if (hojaVida.getDocumento() != null && !hojaVida.getDocumento().equals("")) {
@@ -122,8 +123,9 @@ public class NominaBean implements NominaFachada {
 		}
 		return false;
 	}
+
 	/**
-	 * @autor Christian Mejia
+	 * @autor Christian montes
 	 */
 	@Override
 	public List<Dependencia> traerDependencia() throws Exception {
@@ -171,83 +173,7 @@ public class NominaBean implements NominaFachada {
 		}
 		return flag;
 	}
-	/**
-	 * @autor Mario Murcia
-	 */
-	public void crearContrato(Contrato contrato) throws Exception {
 
-		if (contrato.getCodigo() != null && !contrato.getCodigo().equals("")) {
-			em.persist(contrato);
-		}
-		// TODO Auto-generated method stub
-
-	}
-
-	public Contrato modificarContrato(Contrato contrato) throws Exception {
-		Contrato dep = new Contrato();
-		dep = buscarPorCodigo(contrato.getCodigo());
-		if (dep.getCodigo() > 0) {
-			em.merge(contrato);
-		} else {
-			dep = null;
-		}
-
-		return dep;
-	}
-
-	public boolean eliminarContrato(int codigo) throws Exception {
-		Contrato contrato = buscarPorCodigo(codigo);
-		boolean flag = false;
-		if (contrato.getCodigo() > 0) {
-			em.remove(contrato);
-			flag = true;
-		}
-		return flag;
-	}
-
-    @Override
-    public List<Contrato> listaContratoDependecia() throws Exception {
-        return null;
-    }
-
-    @Override
-    public List<Contrato> listaContratoCargo() throws Exception {
-        return null;
-    }
-
-    @Override
-	public List<Contrato> buscarContratoPorCargo(String cargo) throws Exception {
-		List<Contrato> car = new ArrayList<Contrato>();
-		Query query = em.createNamedQuery(Contrato.ENCONTRAR_POR_CARGO);
-		if (query != null) {
-			query.setParameter("cargo", cargo);
-			car = query.getResultList();
-		}
-		return car;
-	}
-	@Override
-	public List<Contrato> buscarContratoPorDependencia(String dependencia) throws Exception {
-		List<Contrato> car = new ArrayList<Contrato>();
-		Query query = em.createNamedQuery(Contrato.ENCONTRAR_POR_DEPENDENCIA);
-		if (query != null) {
-			query.setParameter("dependenciacod", dependencia);
-			car = query.getResultList();
-		}
-		return car;
-	}
-
-	public List<Contrato> listaContratoAll() throws Exception {
-		List<Contrato> dependencias = new ArrayList<>();
-		Query query = em.createNamedQuery(Contrato.FIND_ALL);
-		dependencias = query.getResultList();
-		return dependencias;
-	}
-
-	private Contrato buscarPorCodigo(int codigoContrato) throws Exception {
-		Contrato p = new Contrato();
-		p = em.find(Contrato.class, codigoContrato);
-		return p;
-	}
 	/**
 	 * @autor Alejandro Parra
 	 */
@@ -337,6 +263,7 @@ public class NominaBean implements NominaFachada {
 		p = em.find(Periodo.class, codigoPeriodo);
 		return p;
 	}
+
 	/**
 	 * @autor Johan Bernal
 	 */
@@ -373,6 +300,96 @@ public class NominaBean implements NominaFachada {
 
 	@Override
 	public List<Nomina> obtenerNominas() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * @autor Mario Murcia
+	 */
+	public void crearContrato(Contrato contrato) throws Exception {
+
+		if (contrato.getCodigo() != null && !contrato.getCodigo().equals("")) {
+			em.persist(contrato);
+		}
+
+	}
+
+	public Contrato modificarContrato(Contrato contrato) throws Exception {
+		Contrato dep = new Contrato();
+		dep = buscarPorCodigo(contrato.getCodigo());
+		if (dep.getCodigo() > 0) {
+			em.merge(contrato);
+		} else {
+			dep = null;
+		}
+
+		return dep;
+	}
+
+	public boolean eliminarContrato(int codigo) throws Exception {
+		Contrato contrato = buscarPorCodigo(codigo);
+		boolean flag = false;
+		if (contrato.getCodigo() > 0) {
+			em.remove(contrato);
+			flag = true;
+		}
+		return flag;
+	}
+	
+	@Override
+	public List<Contrato>buscarContratoPorDependencia(String dependencia) throws Exception {
+		List<Contrato> car = new ArrayList<Contrato>();
+		Query query = em.createNamedQuery(Contrato.ENCONTRAR_POR_DEPENDENCIA);
+		if (query != null) {
+			query.setParameter("dependenciacod", dependencia);
+			car = query.getResultList();
+		}
+		return car;
+	}
+	
+	
+	@Override
+	public List<Contrato> {
+		List<Contrato> car = new ArrayList<Contrato>();
+		Query query = em.createNamedQuery(Contrato.ENCONTRAR_POR_CARGO);
+		if (query != null) {
+			query.setParameter("cargo", cargo);
+			car = query.getResultList();
+		}
+		return car;
+	}
+	
+
+	public List<Contrato> listaContratoAll() throws Exception {
+		List<Contrato> dependencias = new ArrayList<>();
+		Query query = em.createNamedQuery(Contrato.FIND_ALL);
+		dependencias = query.getResultList();
+		return dependencias;
+	}
+	
+
+	private Contrato buscarPorCodigo(int codigoContrato) throws Exception {
+		Contrato p = new Contrato();
+		p = em.find(Contrato.class, codigoContrato);
+		return p;
+	}
+
+	@Override
+	public List<Contrato> listaContratoDependecia() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Contrato> listaContratoCargo() throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

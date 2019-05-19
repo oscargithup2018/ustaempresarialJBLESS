@@ -1,4 +1,4 @@
-package co.com.ustaempresarial.servicio;
+ package co.com.ustaempresarial.servicio;
 
 import co.com.UstaEmpresarial.nomina.modelo.*;
 import co.com.ustaempresarial.fachada.NominaFachada;
