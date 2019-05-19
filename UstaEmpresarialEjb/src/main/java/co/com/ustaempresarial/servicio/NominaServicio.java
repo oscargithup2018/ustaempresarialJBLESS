@@ -1,4 +1,4 @@
- package co.com.ustaempresarial.servicio;
+package co.com.ustaempresarial.servicio;
 
 import co.com.UstaEmpresarial.nomina.modelo.*;
 import co.com.ustaempresarial.fachada.NominaFachada;
@@ -28,8 +28,9 @@ public class NominaServicio {
     public List<HojaVida> listarHojasVida() throws Exception {
         return nominaFachada.listarHojasVida();
     }
+
     //==================================================================================================================
-    //-------------------------------------------------CARGOS-----------------------------------------------------
+    //-------------------------------------------------CARGO-----------------------------------------------------
     //==================================================================================================================
     public List<Cargo> listarCargos() throws Exception {
         return nominaFachada.listarCargos();
@@ -50,9 +51,6 @@ public class NominaServicio {
     //==================================================================================================================
     //-------------------------------------------------DEPENDENCIA-----------------------------------------------------
     //==================================================================================================================
-    public List<Dependencia> traerDependencia() throws Exception {
-        return nominaFachada.traerDependencia();
-    }
 
     public void crearDependencia(Dependencia depen) throws Exception {
         nominaFachada.crearDependencia(depen);
@@ -65,11 +63,16 @@ public class NominaServicio {
     public boolean borrarDependencia(int codigo) throws Exception {
         return nominaFachada.borrarDependencia(codigo);
     }
+
+    public List<Dependencia> traerDependencia() throws Exception {
+        return nominaFachada.listarDependencias();
+    }
+
     //==================================================================================================================
     //-------------------------------------------------CONTRATO-----------------------------------------------------
     //==================================================================================================================
     public Contrato modificarContrato(Contrato contrato) throws Exception {
-        return nominaFachada.modificarContrato(contrato);
+        return nominaFachada.editarContrato(contrato);
     }
 
     public boolean eliminarContrato(int codigo) throws Exception {
@@ -85,13 +88,14 @@ public class NominaServicio {
     }
 
     public List<Contrato> listaContratoAll() throws Exception {
-        return nominaFachada.listaContratoAll();
+        return nominaFachada.listaContratoTodo();
     }
 
     public Concepto editarConcepto(Concepto concep) throws Exception {
         return nominaFachada.editarConcepto(concep);
 
     }
+
     //==================================================================================================================
     //-------------------------------------------------CONCEPTO-----------------------------------------------------
     //==================================================================================================================
@@ -100,8 +104,9 @@ public class NominaServicio {
     }
 
     public List<Concepto> traerConcepto() throws Exception {
-        return nominaFachada.traerConcepto();
+        return nominaFachada.listarConceptos();
     }
+
     //==================================================================================================================
     //-------------------------------------------------PERIODO-----------------------------------------------------
     //==================================================================================================================
@@ -114,7 +119,28 @@ public class NominaServicio {
     }
 
     public List<Periodo> listaPeriodo() throws Exception {
-        return nominaFachada.traerPeriodo();
+        return nominaFachada.listarPeriodos();
     }
 
+    //==================================================================================================================
+    //-------------------------------------------------NOMINA-----------------------------------------------------
+    //==================================================================================================================
+    public void liquidarNomina(Nomina nomina) throws Exception {
+        nominaFachada.liquidarNomina(nomina);
+    }
+
+
+    public Nomina editarNomina(Nomina nomina) throws Exception {
+        return nominaFachada.editarNomina(nomina);
+    }
+
+
+    public boolean conceptosLiquidadosNomina(int id) throws Exception {
+        return nominaFachada.conceptosLiquidadosNomina(id);
+    }
+
+
+    public boolean conceptosPagadosNomina(int id) throws Exception {
+        return nominaFachada.conceptosPagadosNomina(id);
+    }
 }
