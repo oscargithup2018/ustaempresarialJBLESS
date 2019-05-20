@@ -66,12 +66,12 @@ public interface NominaFachada {
      */
     public void editarCargo(Cargo cargos) throws Exception;
 
-    /**
+  /**
      * Elimina un cargo de la base de datos
      *
      * @param cargo Objeto cargo a eliminar
      * @return true si se eliminó, false si no
-     * @throws Exception
+     * @throws Exception  
      */
     public boolean eliminarCargo(Cargo cargo) throws Exception;
 
@@ -155,7 +155,7 @@ public interface NominaFachada {
     /**
      * lista los contratos por -dependencias-hojavida
      *
-     * @return lista
+     * @return lista las dependencias
      * @throws Exception
      */
     public List<Contrato> listaContratoDependecia() throws Exception;
@@ -163,7 +163,7 @@ public interface NominaFachada {
     /**
      * listarContratoCargo lista los contratos por cargo
      *
-     * @return lista
+     * @return lista los cargos
      * @throws Exception
      */
     public List<Contrato> listaContratoCargo() throws Exception;
@@ -171,7 +171,7 @@ public interface NominaFachada {
     /**
      * listarContratoAll lista todo el contrato
      *
-     * @return lista
+     * @return lista con todos los datos 
      * @throws Exception
      */
     public List<Contrato> listaContratoTodo() throws Exception;
