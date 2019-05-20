@@ -69,7 +69,8 @@ public class NominaBean implements NominaFachada {
     public List<HojaVida> listarHojasVida() throws Exception {
         List<HojaVida> hojaVidas = new ArrayList<>();
         Query query = em.createNamedQuery(HojaVida.FILL_ALL);
-        return null;
+        hojaVidas = query.getResultList();
+        return hojaVidas;
     }
 
     private HojaVida buscarPorIdHojaVida(int idHojaVida) throws Exception {
@@ -77,7 +78,6 @@ public class NominaBean implements NominaFachada {
         hojaVida = em.find(HojaVida.class, idHojaVida);
         return hojaVida;
     }
-
 
     // =================================================================================================================
     // -------------------------------------------------CARGO-----------------------------------------------------------
@@ -148,16 +148,10 @@ public class NominaBean implements NominaFachada {
         }
     }
 
-    private Dependencia buscarPorCod(int codigoDependencia) throws Exception {
-        Dependencia p = new Dependencia();
-        p = em.find(Dependencia.class, codigoDependencia);
-        return p;
-    }
-
     @Override
     public void editarDependencia(Dependencia depen) throws Exception {
         Dependencia dep = new Dependencia();
-        dep = buscarPorCod(depen.getCodigo());
+        dep = buscarDependenciaPorCod(depen.getCodigo());
         if (dep.getCodigo() > 0) {
             em.merge(depen);
         } else {
@@ -168,7 +162,7 @@ public class NominaBean implements NominaFachada {
 
     @Override
     public boolean borrarDependencia(int codigo) throws Exception {
-        Dependencia dependencias = buscarPorCod(codigo);
+        Dependencia dependencias = buscarDependenciaPorCod(codigo);
         Contrato contrato = new Contrato();
         boolean flag = false;
         if (dependencias.getCodigo() > 0) {
@@ -180,6 +174,11 @@ public class NominaBean implements NominaFachada {
         return flag;
     }
 
+    private Dependencia buscarDependenciaPorCod(int codigoDependencia) throws Exception {
+        Dependencia p = new Dependencia();
+        p = em.find(Dependencia.class, codigoDependencia);
+        return p;
+    }
     // =================================================================================================================
     // -------------------------------------------------CONTRATO-----------------------------------------------------------
     // =================================================================================================================
@@ -187,12 +186,23 @@ public class NominaBean implements NominaFachada {
     /**
      * @autor Mario Murcia
      */
-    public void crearContrato(Contrato contrato) throws Exception {
-
+    public boolean crearContrato(Contrato contrato) throws Exception {
+        boolean flag = true;
         if (contrato.getCodigo() != null && !contrato.getCodigo().equals("")) {
-            em.persist(contrato);
-        }
+            Contrato contrato1 = buscarContratoPorCodigo(contrato.getCodigo());
+            if (contrato1.getCodigo() > 1) {
+                //https://www.mkyong.com/java/how-to-compare-dates-in-java/
+                //si las fechas no se cruzan, es decir que el nuevo contrato empieza después de haber finalizado el registrado
+                if (contrato1.getFechaFin().compareTo(contrato.getFechaInicio()) < 0) {
+                    em.persist(contrato);
+                } else {
+                    //se cruzan los contratos
+                    flag = false;
+                }
 
+            }
+        }
+        return flag;
     }
 
     public Contrato editarContrato(Contrato contrato) throws Exception {
@@ -230,7 +240,7 @@ public class NominaBean implements NominaFachada {
 
     @Override
     public List<Contrato> listaContratoCargo() throws Exception {
-        List<Contrato> car = new ArrayList<Contrato>();
+        List<Contrato> car = new ArrayList<>();
         Query query = em.createNamedQuery(Contrato.ENCONTRAR_POR_CARGO);
         if (query != null) {
 //            query.setParameter("cargo", cargo);
@@ -240,7 +250,7 @@ public class NominaBean implements NominaFachada {
     }
 
 
-
+    @Override
     public List<Contrato> listaContratoTodo() throws Exception {
         List<Contrato> dependencias = new ArrayList<>();
         Query query = em.createNamedQuery(Contrato.FIND_ALL);
@@ -379,17 +389,20 @@ public class NominaBean implements NominaFachada {
 
     }
 
-    public boolean conceptosLiquidadosNomina(int codigo) throws Exception {
-        // TODO Auto-generated method stub
-        return false;
+    public List conceptosLiquidadosNomina(int codigo) throws Exception {
+        List nominas;
+        Query query = em.createNamedQuery(Nomina.LIQUIDACION_NOMINA);
+        nominas = query.getResultList();
+        return nominas;
     }
 
     @Override
-    public boolean conceptosPagadosNomina(int codigo) throws Exception {
-        // TODO Auto-generated method stub
-        return false;
+    public Object conceptosPagadosNomina(int codigo) throws Exception {
+        List nominas;
+        Query query = em.createNamedQuery(Nomina.LIQUIDACION_NOMINA);
+        nominas = query.getResultList();
+        return nominas;
     }
-
 
 
 }
