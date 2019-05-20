@@ -13,7 +13,7 @@ public interface NominaFachada {
     // ==================================================================================================================
 
     /**
-     * Permite crear una nueva hoja de vida
+     * Crea una nueva hoja de vida
      *
      * @param hojaVida Objeto hoja de vida
      * @return
@@ -31,7 +31,7 @@ public interface NominaFachada {
     public HojaVida modificarHojaVida(HojaVida hojaVida) throws Exception;
 
     /**
-     * Elimina la hoja de vida correspondiente al codigo
+     * Elimina la hoja de vida correspondiente al código
      *
      * @param codigoHojaVida
      * @return
@@ -40,7 +40,7 @@ public interface NominaFachada {
     public boolean eliminarHojaVida(int codigoHojaVida) throws Exception;
 
     /**
-     * Muestra el listado de las hojas de vida del personal registrado
+     * Lista todas la hojas de vida existentes
      *
      * @return Listado de las hojas de vida registradas
      * @throws Exception
@@ -51,20 +51,20 @@ public interface NominaFachada {
     // ==================================================================================================================
 
     /**
-     * Crea un nuevo cargo en la base de datos
+     * Crea un nuevo Cargo existente en la base de datos
      *
-     * @param cargos Objeto cargo
+     * @param cargo Objeto cargo
      * @throws Exception
      */
-    public void crearCargo(Cargo cargos) throws Exception;
+    public void crearCargo(Cargo cargo) throws Exception;
 
     /**
      * Edita un cargo existente en la base de datos
      *
-     * @param cargos Objetos cargo a editar
+     * @param cargo Objetos cargo a editar
      * @throws Exception
      */
-    public void editarCargo(Cargo cargos) throws Exception;
+    public void editarCargo(Cargo cargo) throws Exception;
 
   /**
      * Elimina un cargo de la base de datos
@@ -88,7 +88,7 @@ public interface NominaFachada {
     // ==================================================================================================================
 
     /**
-     * Método que crea una dependencia
+     * Crea una nueva Dependencia
      *
      * @param depen Tipo de objeto a crear
      * @throws Exception Capturar errores posibles sobre ejecución
@@ -96,7 +96,7 @@ public interface NominaFachada {
     public void crearDependencia(Dependencia depen) throws Exception;
 
     /**
-     * Metodo encargado de actualizar la dependencia
+     * Modifica una dependencia existente
      *
      * @param depen dependencia
      * @return dependencia actualizada
@@ -105,7 +105,7 @@ public interface NominaFachada {
     public void editarDependencia(Dependencia depen) throws Exception;
 
     /**
-     * Borra la dependencia seleccionada
+     * Elimina  la dependencia correspondiente al código especificado
      *
      * @param codigo Código de la dependencia
      * @return true: borra si el código de la dependencia está en contrato
@@ -114,7 +114,7 @@ public interface NominaFachada {
     public boolean borrarDependencia(int codigo) throws Exception;
 
     /**
-     * Se listan las dependencias correspondientes
+     * Lista todas las  dependencias existentes
      *
      * @return List<dependencia>: Lista de dependencias
      * @throws Exception Capturar errores posibles sobre ejecución
@@ -126,16 +126,16 @@ public interface NominaFachada {
     // ==================================================================================================================
 
     /**
-     * crea un contrato
+     * Crea un contrato
      *
      * @param contrato
      * @return true or false
      * @throws Exception
      */
-    public void crearContrato(Contrato contrato) throws Exception;
+    public boolean crearContrato(Contrato contrato) throws Exception;
 
     /**
-     * modifica un contrato
+     * Modifica un contrato
      *
      * @param contrato
      * @return true or false
@@ -144,7 +144,7 @@ public interface NominaFachada {
     public Contrato editarContrato(Contrato contrato) throws Exception;
 
     /**
-     * eliminarContrato
+     * Elimina un Contrato correspondiente al código especificado
      *
      * @param codigo
      * @return true or false
@@ -181,7 +181,7 @@ public interface NominaFachada {
     // ==================================================================================================================
 
     /**
-     * Crea un nuevo cargo en la base de datos
+     * Crea un nuevo concepto en la base de datos
      *
      * @param conceptos Objeto concepto
      * @throws Exception
@@ -189,7 +189,7 @@ public interface NominaFachada {
     public void crearConcepto(Concepto conceptos) throws Exception;
 
     /**
-     * Edita un cargo existente en la base de datos
+     * Edita un concepto existente en la base de datos
      *
      * @param concep editar
      * @throws Exception
@@ -197,7 +197,7 @@ public interface NominaFachada {
     public Concepto editarConcepto(Concepto concep) throws Exception;
 
     /**
-     * Elimina un cargo de la base de datos
+     * Elimina un concepto de la base de datos
      *
      * @param codigo a eliminar
      * @return true si se eliminó, false si no
@@ -206,7 +206,7 @@ public interface NominaFachada {
     public boolean borrarConcepto(int codigo) throws Exception;
 
     /**
-     * Lista todos los conceptos en la base de datos
+     * Lista todos los conceptos de la base de datos
      *
      * @return lista de entidades de la tabla cargo
      * @throws Exception
@@ -218,7 +218,7 @@ public interface NominaFachada {
     // ==================================================================================================================
 
     /**
-     * Método que crea un Periodo
+     * Crea un Periodo
      *
      * @param per Tipo de objeto a crear
      * @throws Exception Capturar errores posibles sobre ejecución
@@ -226,7 +226,7 @@ public interface NominaFachada {
     public boolean crearPeriodo(Periodo per) throws Exception;
 
     /**
-     * Metodo encargado de actualizar los periodos
+     * Edita un periodo
      *
      * @param per periodo
      * @return periodo actualizado
@@ -235,7 +235,7 @@ public interface NominaFachada {
     public boolean editarPeriodo(Periodo per) throws Exception;
 
     /**
-     * Borra el periodo seleccionado
+     * Borra el periodo correspondiente al código
      *
      * @param codigo Código del periodo
      * @return true: donde si borra y false donde hay error de ejecución
@@ -265,7 +265,7 @@ public interface NominaFachada {
     public void liquidarNomina(Nomina nomina) throws Exception;
 
     /**
-     * editarNomina
+     * Edita una nomina
      *
      * @param nomina
      * @return
@@ -274,22 +274,21 @@ public interface NominaFachada {
     public Nomina editarNomina(Nomina nomina) throws Exception;
 
     /**
-     * borrarNomina
-     *
-     * @param id
+     * Lista todos los pagos de nomina realizados por el periodo especificado
+     * @param periodo mes en el que se realizó la liquidación de nomina
      * @return
      * @throws Exception
      */
 
-    public boolean conceptosLiquidadosNomina(int id) throws Exception;
+    public List conceptosLiquidadosNomina(int periodo) throws Exception;
 
     /**
-     * sueldo*diastrabajados
+     * Lista todos los conceptos respecto  al pago por dias trabajados
      *
      * @param id
      * @return
      * @throws Exception
      */
 
-    public boolean conceptosPagadosNomina(int id) throws Exception;
+    public Object conceptosPagadosNomina(int id) throws Exception;
 }
