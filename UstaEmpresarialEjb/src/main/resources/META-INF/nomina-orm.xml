@@ -4,100 +4,64 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
 
-	<named-query name="Campania.TRAER_CAMPANIA">
+	<named-query name="Cargo.Listar_cargo">
 		<query>
-			SELECT c 
-			FROM Campania c
+			SELECT c
+			FROM Cargo c
 		</query>
 	</named-query>
 	
-	<named-query name="Campania.ENCONTRAR_POR_NOMBRE">
+	<named-query name=	"Contrato.FIND_ALL">
 		<query>
 			SELECT c 
-			FROM Campania c
+			FROM Concepto c
 			WHERE c.nombre like '%:nombre%'
 		</query>
 	</named-query>
+	<named-query name="Contrato.ENCONTRAR_POR_CARGO">
+		<query>
+			SELECT c
+			FROM Contrato c
+			WHERE c.cargoCod = ':cargoCod'
+		</query>
+	</named-query>
+
+	<named-query name="	Contrato.ENCONTRAR_POR_DEPENDENCIA">
+		<query>
+			SELECT c
+			FROM Contrato c
+			WHERE c.dependenciaCod = ':dependenciaCod'
+		</query>
+	</named-query>
 
 
-	<named-query name="Periodo.TRAER_PERIODO">
+	<named-query name="Dependencia.Listar_depndencia">
+		<query>
+			SELECT d
+			FROM Dependencia d
+		</query>
+	</named-query>
+
+	<named-query name="Hoja_vida.Listar_hojaVida">
+		<query>
+			SELECT h
+			FROM HojaVida h
+		</query>
+	</named-query>
+
+
+	<named-query name="Nomina.Listar_nomina">
+		<query>
+			SELECT n
+			FROM Nomina n
+		</query>
+	</named-query>
+
+	<named-query name="Peiodo.Listar_periodo">
 		<query>
 			SELECT p
 			FROM Periodo p
 		</query>
 	</named-query>
-
-	<named-query name="Periodo.ENCONTRAR_POR_FECHAI">
-		<query>
-			SELECT p
-			FROM Periodo p
-			WHERE p.fecha_inicio = ':fechainicio'
-		</query>
-	</named-query>
-
-
-	<named-query name="Evento.TRAER_EVENTO">
-		<query>
-			SELECT e
-			FROM Evento e
-		</query>
-	</named-query>
-
-	<named-query name="Evento.ENCONTRAR_POR_NOMBRE">
-		<query>
-			SELECT e
-			FROM Evento e
-			WHERE e.nombre like '%:nombre%'
-		</query>
-	</named-query>
-
-
-	<named-query name="Recurso.TRAER_RECURSO">
-		<query>
-			SELECT r
-			FROM Recurso r
-		</query>
-	</named-query>
-
-	<named-query name="Recurso.ENCONTRAR_POR_NOMBRE">
-		<query>
-			SELECT r
-			FROM Recurso r
-			WHERE r.nombre like '%:nombre%'
-		</query>
-	</named-query>
-
-
-	<named-query name="TipoMedio.TRAER_TIPOMEDIO">
-		<query>
-			SELECT tm
-			FROM Tipo_Medio tm
-		</query>
-	</named-query>
-
-	<named-query name="Recurso.ENCONTRAR_POR_NOMBRE">
-		<query>
-			SELECT tm
-			FROM Tipo_Medio tm
-			WHERE tm.nombre like '%:nombre%'
-		</query>
-	</named-query>
-	
-
-	<named-query name="Medio.TRAER_MEDIO">
-		<query>
-			SELECT m
-			FROM Medio m
-		</query>
-	</named-query>
-
-	<named-query name="Medio.ENCONTRAR_POR_NOMBRE">
-		<query>
-			SELECT m
-			FROM Medio m
-			WHERE m.nombre like '%:nombre%'
-		</query>
-	</named-query>
-
 
 </entity-mappings>
