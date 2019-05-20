@@ -57,6 +57,29 @@
 		</query>
 	</named-query>
 
+	<named-query name="Nomina.liquidacion_nomina">
+		<query>
+			select concat(h.nombre, ' ', h.apellido) as nombre,
+			contr.salario,
+			concep.nombre,
+			concep.descripcion,
+			CASE
+			WHEN concep.tipo = 'false' THEN 'deducido'
+			WHEN concep.tipo = 'true' THEN 'devengado'
+			END,
+			concep.formula
+			from hoja_vida h,
+			contrato contr,
+			concepto concep,
+			nomina n,
+			periodo p
+			where h.documento = contr.hoja_vida_doc
+			and contr.codigo = n.contrato_cod
+			and concep.codigo = n.concepto_cod
+			and p.codigo = n.periodo_cod;
+		</query>
+	</named-query>
+
 	<named-query name="Peiodo.Listar_periodo">
 		<query>
 			SELECT p
