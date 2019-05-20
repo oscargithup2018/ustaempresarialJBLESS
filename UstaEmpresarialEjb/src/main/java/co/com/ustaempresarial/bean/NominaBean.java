@@ -389,19 +389,39 @@ public class NominaBean implements NominaFachada {
 
     }
 
-    public List conceptosLiquidadosNomina(int codigo) throws Exception {
-        List nominas;
-        Query query = em.createNamedQuery(Nomina.LIQUIDACION_NOMINA);
-        nominas = query.getResultList();
+    public List conceptosLiquidadosNominaEmpleado(int empleadoDoc) throws Exception {
+        List nominas = new ArrayList();
+        Query query = em.createNamedQuery(Nomina.LIQUIDACION_NOMINA_EMPLEADO);
+        if (empleadoDoc != 0) {
+            query.setParameter("documento", empleadoDoc);
+            nominas = query.getResultList();
+        }
         return nominas;
     }
 
     @Override
-    public Object conceptosPagadosNomina(int codigo) throws Exception {
-        List nominas;
-        Query query = em.createNamedQuery(Nomina.LIQUIDACION_NOMINA);
-        nominas = query.getResultList();
+    public List conceptosLiquidadosPorPeriodo(int periodo) throws Exception {
+        List nominas = new ArrayList();
+        Query query = em.createNamedQuery(Nomina.LIQUIDACION_NOMINA_PERIODO);
+        if (periodo != 0) {
+            query.setParameter("periodo", periodo);
+            nominas = query.getResultList();
+        }
         return nominas;
+    }
+
+    //-------------------------------** regla de negocio ** ---------------------------------------------
+    @Override
+    public List compararLiquidaciones() throws Exception {
+//        List peridoReciente = conceptosLiquidadosPorPeriodo(2);
+//        List periodoAnterior = conceptosLiquidadosPorPeriodo(1);
+//        for(Object item: peridoReciente){
+////            item.get("");
+//        }
+//        Query query = em.createNamedQuery(Nomina.COMPARAR_LIQUIDACION_PERIODO);
+//        nominas = query.getResultList();
+//        return nominas;
+        return null;
     }
 
 

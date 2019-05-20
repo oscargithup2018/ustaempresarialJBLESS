@@ -66,12 +66,12 @@ public interface NominaFachada {
      */
     public void editarCargo(Cargo cargo) throws Exception;
 
-  /**
+    /**
      * Elimina un cargo de la base de datos
      *
      * @param cargo Objeto cargo a eliminar
      * @return true si se eliminó, false si no
-     * @throws Exception  
+     * @throws Exception
      */
     public boolean eliminarCargo(Cargo cargo) throws Exception;
 
@@ -171,7 +171,7 @@ public interface NominaFachada {
     /**
      * listarContratoAll lista todo el contrato
      *
-     * @return lista con todos los datos 
+     * @return lista con todos los datos
      * @throws Exception
      */
     public List<Contrato> listaContratoTodo() throws Exception;
@@ -274,21 +274,32 @@ public interface NominaFachada {
     public Nomina editarNomina(Nomina nomina) throws Exception;
 
     /**
-     * Lista todos los pagos de nomina realizados por el periodo especificado
-     * @param periodo mes en el que se realizó la liquidación de nomina
+     * Lista todos los pagos de nomina realizados a un empleado
+     *
+     * @param documento documento del empleado
      * @return
      * @throws Exception
      */
 
-    public List conceptosLiquidadosNomina(int periodo) throws Exception;
+    public List conceptosLiquidadosNominaEmpleado(int documento) throws Exception;
 
     /**
-     * Lista todos los conceptos respecto  al pago por dias trabajados
+     * Lista todos los pagos de nomina por periodos de todos los empleados
      *
      * @param id
      * @return
      * @throws Exception
      */
+    public List conceptosLiquidadosPorPeriodo(int id) throws Exception;
 
-    public Object conceptosPagadosNomina(int id) throws Exception;
+    //-------------------------------** regla de negocio ** ---------------------------------------------
+
+    /**
+     * Compara las liquidaciones del mes actual con el mes anterior las cuales en caso de  superar el 10%
+     * en diferencias se debe generar un reporte informando.
+     * @return
+     * @throws Exception
+     */
+    public List compararLiquidaciones() throws Exception;
+
 }

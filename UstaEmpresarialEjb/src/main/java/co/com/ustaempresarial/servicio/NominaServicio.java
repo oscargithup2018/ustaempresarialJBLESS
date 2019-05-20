@@ -324,22 +324,32 @@ public class NominaServicio {
     /**
      * Lista todos los pagos de nomina realizados por el periodo especificado
      *
-     * @param periodo mes en el que se realizó la liquidación de nomina
+     * @param empleado mes en el que se realizó la liquidación de nomina
      * @return
      * @throws Exception
      */
-    public List conceptosLiquidadosNomina(int periodo) throws Exception {
-        return nominaFachada.conceptosLiquidadosNomina(periodo);
+    public List conceptosLiquidadosNominaEmpleado(int empleado) throws Exception {
+        return nominaFachada.conceptosLiquidadosNominaEmpleado(empleado);
     }
 
     /**
      * Lista todos los conceptos respecto  al pago por dias trabajados
      *
-     * @param id
+     * @param periodo
      * @return
      * @throws Exception
      */
-    public Object conceptosPagadosNomina(int id) throws Exception {
-        return nominaFachada.conceptosPagadosNomina(id);
+    public Object conceptosLiquidadosPorPeriodo(int periodo) throws Exception {
+        return nominaFachada.conceptosLiquidadosPorPeriodo(periodo);
+    }
+
+    /**
+     * Se debe comparar las liquidaciones del mes actual con el mes anterior y no debe superar el 10%
+     * en diferencias, delo contrario se debe generar un reporte informando.
+     * @return
+     * @throws Exception
+     */
+    public List compararLiquidaciones() throws Exception {
+        return nominaFachada.compararLiquidaciones();
     }
 }

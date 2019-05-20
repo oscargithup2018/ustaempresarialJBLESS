@@ -13,7 +13,10 @@ import java.util.Date;
 public class Nomina implements Serializable {
     private static final long serialVersionUID = 1L;
     public static final String LISTAR_NOMINA = "Nomina.Listar_nomina";
-    public static final String LIQUIDACION_NOMINA = "Nomina.liquidacion_nomina";
+    public static final String LIQUIDACION_NOMINA_EMPLEADO = "Nomina.liquidacion_nomina_empleado";
+    public static final String LIQUIDACION_NOMINA_PERIODO = "Nomina.liquidacion_nomina_periodo";
+    public static final String COMPARAR_LIQUIDACION_PERIODO = "Nomina.comparar_liquidacion";
+
     private NominaPK id;
     private Date fechaInsert;
     private String fechaUpdate;
