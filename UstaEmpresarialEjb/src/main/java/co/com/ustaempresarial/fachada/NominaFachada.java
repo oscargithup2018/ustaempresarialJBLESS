@@ -262,7 +262,7 @@ public interface NominaFachada {
      * @param nomina
      * @throws Exception
      */
-    public void liquidarNomina(Nomina nomina) throws Exception;
+    public boolean liquidarNomina(Nomina nomina) throws Exception;
 
     /**
      * Edita una nomina

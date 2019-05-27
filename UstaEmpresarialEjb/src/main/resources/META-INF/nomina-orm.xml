@@ -4,7 +4,7 @@
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
 
-    <named-query name="Cargo.Listar_cargo">
+    <named-query name="Cargo.LISTAR_CARGO">
         <query>
             SELECT c
             FROM Cargo c
@@ -35,14 +35,14 @@
     </named-query>
 
 
-    <named-query name="Dependencia.Listar_depndencia">
+    <named-query name="Dependencia.LISTAR_POR_DEPENDENCIA">
         <query>
             SELECT d
             FROM Dependencia d
         </query>
     </named-query>
 
-    <named-query name="Hoja_vida.Listar_hojaVida">
+    <named-query name="Hoja_vida.LISTAR_HOJA_VIDA">
         <query>
             SELECT h
             FROM HojaVida h
@@ -50,30 +50,44 @@
     </named-query>
 
 
-    <named-query name="Nomina.Listar_nomina">
+    <named-query name="Nomina.LISTAR_NOMINA">
         <query>
             SELECT n
             FROM Nomina n
         </query>
     </named-query>
 
-    <named-native-query name="Nomina.liquidacion_nomina_empleado" result-set-mapping="mapeado1">
+    <named-query name="Nomina.COMPARAR_LIQUIDACION">
+        <query>
+            SELECT n
+            FROM Nomina n
+        </query>
+    </named-query>
+
+    <named-query name="Peiodo.LISTAR_PERIODO">
+        <query>
+            SELECT p
+            FROM Periodo p
+        </query>
+    </named-query>
+
+    <named-native-query name="Nomina.LIQUIDACION_NOMINA_EMPLEADO" result-set-mapping="mapeado1">
         <query>
             select concat(h.nombre, ' ', h.apellido) as nombre,
-            contr.salario,
-            concep.nombre,
+            contr.salario as salario,
+            concep.nombre as nombrecocepto,
             CASE
             WHEN concep.tipo = 'false' THEN 'deducido'
             WHEN concep.tipo = 'true' THEN 'devengado'
             END as tipo,
-            concep.formula,
+            concep.formula as formula,
             contr.salario * CAST(concep.formula AS float) as resultado
             from hoja_vida h,
             contrato contr,
             concepto concep,
             nomina n,
             periodo p
-            where h.documento = ':documento'
+            where h.documento = ?1
             and h.documento = contr.hoja_vida_doc
             and contr.codigo = n.contrato_cod
             and concep.codigo = n.concepto_cod
@@ -81,11 +95,8 @@
         </query>
     </named-native-query>
 
-    <sql-result-set-mapping name="mapeado1">
-        <column-result name="nombre"/>
-    </sql-result-set-mapping>
-
-    <named-native-query name="Nomina.liquidacion_nomina_periodo" result-set-mapping="mapeado2">
+ 
+    <named-native-query name="Nomina.LIQUIDACION_NOMINA_PERIODO" result-set-mapping="mapeado2">
         <query>
             select concat(h.nombre, ' ', h.apellido)             as nombre,
             contr.salario,
@@ -101,7 +112,7 @@
             concepto concep,
             nomina n,
             periodo p
-            where n.periodo_cod = ":periodo"
+            where n.periodo_cod = ?
             and h.documento = contr.hoja_vida_doc
             and contr.codigo = n.contrato_cod
             and concep.codigo = n.concepto_cod
@@ -109,22 +120,12 @@
         </query>
     </named-native-query>
 
-    <sql-result-set-mapping name="mapeado2">
+    <sql-result-set-mapping name="mapeado1">
         <column-result name="nombre"/>
     </sql-result-set-mapping>
 
-    <named-query name="Nomina.comparar_liquidacion">
-        <query>
-            SELECT n
-            FROM Nomina n
-        </query>
-    </named-query>
-
-    <named-query name="Peiodo.Listar_periodo">
-        <query>
-            SELECT p
-            FROM Periodo p
-        </query>
-    </named-query>
+  <sql-result-set-mapping name="mapeado2">
+        <column-result name="nombre"/>
+    </sql-result-set-mapping>
 
 </entity-mappings>

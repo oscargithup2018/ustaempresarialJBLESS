@@ -370,8 +370,9 @@ public class NominaBean implements NominaFachada {
      * @autor Johan Bernal
      */
     @Override
-    public void liquidarNomina(Nomina nomina) throws Exception {
-        // TODO Auto-generated method stub
+    public boolean liquidarNomina(Nomina nomina) throws Exception {
+//        Query query = em.createNativeQuery(Nomina.)
+        return  true;
 
     }
 

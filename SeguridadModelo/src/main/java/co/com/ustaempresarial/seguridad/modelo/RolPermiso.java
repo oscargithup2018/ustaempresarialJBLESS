@@ -4,23 +4,23 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-
 /**
  * The persistent class for the rol_permiso database table.
  * 
  */
 @Entity
-@Table(name="rol_permiso")
-@NamedQuery(name="RolPermiso.findAll", query="SELECT r FROM RolPermiso r")
+@Table(name = "rol_permiso")
+@NamedQuery(name = "RolPermiso.findAll", query = "SELECT r FROM RolPermiso r")
 public class RolPermiso implements Serializable {
 	private static final long serialVersionUID = 1L;
-        public static final String LISTAR_PERMISOS = "RolPermiso.LISTAR_PERMISOS";
+	public static final String LISTAR_PERMISOS = "RolPermiso.LISTAR_PERMISOS";
 
 	@EmbeddedId
 	private RolPermisoPK id;
 
-@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Timestamp fecha;
+
 	public RolPermiso() {
 	}
 
@@ -33,11 +33,7 @@ public class RolPermiso implements Serializable {
 	}
 
 	public void setFecha(Timestamp fecha) {
-		this.fecha =(Timestamp) fecha;
-	}
-
-	public void setFecha(Timestamp fecha) {
-		this.fecha = fecha;
+		this.fecha = (Timestamp) fecha;
 	}
 
 }

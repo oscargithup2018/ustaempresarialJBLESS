@@ -10,10 +10,10 @@ import java.util.Date;
  * 
  */
 @Entity
-@Table(name="hoja_vida", schema = "ustanomina")
+@Table(name="hoja_vida", schema = "nomina")
 public class HojaVida implements Serializable {
 	private static final long serialVersionUID = 1L;
-	public static final String FILL_ALL = "Hoja_vida.Listar_hojaVida";
+	public static final String FILL_ALL = "Hoja_vida.LISTAR_HOJA_VIDA";
 	private Integer documento;
 	private String apellido;
 	private String direccion;
