@@ -1,5 +1,6 @@
 package co.com.ustaempresarial.bean;
 
+import co.com.UstaEmpresarial.nomina.dto.LiquidacionNominaDTO;
 import co.com.UstaEmpresarial.nomina.modelo.*;
 import co.com.ustaempresarial.fachada.NominaFachada;
 
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class NominaBean implements NominaFachada {
 
-    @PersistenceContext(unitName = "nomina")
+    @PersistenceContext(unitName = "PerisistenceNomina")
     private EntityManager em;
 
     public NominaBean() {
@@ -35,11 +36,13 @@ public class NominaBean implements NominaFachada {
      */
 
     @Override
-    public HojaVida crearHojaVida(HojaVida hojaVida) throws Exception {
+    public boolean crearHojaVida(HojaVida hojaVida) throws Exception {
         if (hojaVida.getDocumento() != null && !hojaVida.getDocumento().equals("")) {
             em.persist(hojaVida);
+            em.flush();
+            return true;
         }
-        return null;
+        return false;
     }
 
     @Override
@@ -145,6 +148,7 @@ public class NominaBean implements NominaFachada {
     public void crearDependencia(Dependencia dep) throws Exception {
         if (dep.getNombre() != null && !dep.getNombre().equals("")) {
             em.persist(dep);
+            em.flush();
         }
     }
 
@@ -193,6 +197,7 @@ public class NominaBean implements NominaFachada {
             if (contrato1.getCodigo() > 0) {
                 if (contrato1.getFechaFin().compareTo(contrato.getFechaInicio()) < 0) {
                     em.persist(contrato);
+                    em.flush();
                 } else {
                     //se cruzan los contratos
                     flag = false;
@@ -278,6 +283,7 @@ public class NominaBean implements NominaFachada {
     public void crearConcepto(Concepto con) throws Exception {
         if (con.getNombre() != null && !con.getNombre().equals("")) {
             em.persist(con);
+            em.flush();
         }
     }
 
@@ -324,6 +330,7 @@ public class NominaBean implements NominaFachada {
     public boolean crearPeriodo(Periodo per) throws Exception {
         if (per.getCodigo() != null && !per.getCodigo().equals("")) {
             em.persist(per);
+            em.flush();
             return true;
         }
         return false;
@@ -366,37 +373,52 @@ public class NominaBean implements NominaFachada {
      */
     @Override
     public boolean liquidarNomina(Nomina nomina) throws Exception {
-//        Query query = em.createNativeQuery(Nomina.)
-        return  true;
-
+        if (nomina.getId() != null) {
+            em.persist(nomina);
+            em.flush();
+            return true;
+        }
+        return false;
     }
 
     @Override
     public Nomina editarNomina(Nomina nomina) throws Exception {
-
         Nomina nomina1 = new Nomina();
-        // nomina1 = buscarPorIdHojaVida(hojaVida.getDocumento());
         if (nomina1 != null) {
             em.merge(nomina);
         } else {
             nomina1 = null;
         }
         return nomina1;
-
     }
 
-    public List conceptosLiquidadosNominaEmpleado(int empleadoDoc) throws Exception {
-        List nominas = new ArrayList();
+
+    public List<LiquidacionNominaDTO> conceptosLiquidadosNominaEmpleado(int empleadoDoc) throws Exception {
+        List<LiquidacionNominaDTO> nominas = new ArrayList();
         Query query = em.createNamedQuery(Nomina.LIQUIDACION_NOMINA_EMPLEADO);
+
         if (empleadoDoc != 0) {
-            query.setParameter("documento", empleadoDoc);
-            nominas = query.getResultList();
+            query.setParameter(1, empleadoDoc);
+            List<Object[]> resultado = query.getResultList();
+            if (resultado.size() > 0) {
+                for (Object[] obj : resultado) {
+                    LiquidacionNominaDTO dto = new LiquidacionNominaDTO();
+//                    dto.setDireccion();
+                    dto.setFormula((String) obj[4]);
+                    dto.setNombre((String) obj[0]);
+                    dto.setResultado(String.valueOf((Float) obj[5]));
+                    dto.setSalario(Double.valueOf((Integer) obj[1]));
+                    dto.setTipo((String) obj[3]);
+                    dto.setConcepto((String) obj[2]);
+                    nominas.add(dto);
+                }
+            }
         }
         return nominas;
     }
 
     @Override
-    public List conceptosLiquidadosPorPeriodo(int periodo) throws Exception {
+    public List<LiquidacionNominaDTO> conceptosLiquidadosPorPeriodo(int periodo) throws Exception {
         List nominas = new ArrayList();
         Query query = em.createNamedQuery(Nomina.LIQUIDACION_NOMINA_PERIODO);
         if (periodo != 0) {
@@ -408,7 +430,7 @@ public class NominaBean implements NominaFachada {
 
     //-------------------------------** regla de negocio ** ---------------------------------------------
     @Override
-    public List compararLiquidaciones() throws Exception {
+    public List<LiquidacionNominaDTO> compararLiquidaciones() throws Exception {
 //        List peridoReciente = conceptosLiquidadosPorPeriodo(2);
 //        List periodoAnterior = conceptosLiquidadosPorPeriodo(1);
 //        for(Object item: peridoReciente){
