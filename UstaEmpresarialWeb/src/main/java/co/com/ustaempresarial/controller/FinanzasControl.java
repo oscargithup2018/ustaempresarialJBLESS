@@ -3,16 +3,22 @@ package co.com.ustaempresarial.controller;
 import co.com.ustaempresarial.finanzas.modelo.PlanContable;
 import co.com.ustaempresarial.servicio.FinanzasServicio;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
-@ManagedBean(name = "finanzas")
+@ManagedBean
 @SessionScoped
+@ViewScoped
 public class FinanzasControl implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -22,12 +28,15 @@ public class FinanzasControl implements Serializable {
     private String descripcion;
     private String nombre;
     private Integer tipo;
+    private List<PlanContable> planContables;
+    private int buscarCodPlanContable;
 
     @Temporal(TemporalType.DATE)
     private Date vigencia;
 
     @EJB
-    private FinanzasServicio finanzasServicio;
+//    @ManagedProperty("#{finanzasService}")
+    private FinanzasServicio servicio;
 
     public void crearPlanContable() {
         try {
@@ -38,10 +47,31 @@ public class FinanzasControl implements Serializable {
             planContable.setNombre(nombre);
             planContable.setTipo(tipo);
             planContable.setVigencia(vigencia);
-            finanzasServicio.crearPlanContable(planContable);
+            servicio.crearPlanContable(planContable);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void modificarPlanContable() {
+        try {
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void eliminarPlanContable() {
+        try {
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @PostConstruct
+    public void init() throws Exception {
+        planContables = servicio.listarPlanContable();
     }
 
     public Integer getCodigo() {
@@ -88,8 +118,36 @@ public class FinanzasControl implements Serializable {
         return vigencia;
     }
 
-    public void setVigencia(Date vigencia) {
-        this.vigencia = vigencia;
+    public void setVigencia(String vigencia) {
+        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha = null;
+        try {
+            fecha = formatoDelTexto.parse(vigencia);
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+        this.vigencia = fecha;
     }
 
+    public List<PlanContable> getPlanContables() {
+        return planContables;
+    }
+
+    public void setService(FinanzasServicio servicio) {
+        this.servicio = servicio;
+    }
+
+    public int getBuscarCodPlanContable() {
+        return buscarCodPlanContable;
+    }
+
+    public void setBuscarCodPlanContable(int buscarCodPlanContable) {
+        this.buscarCodPlanContable = buscarCodPlanContable;
+    }
+
+    public PlanContable buscarPlanContable() throws Exception {
+        PlanContable planContable = servicio.buscarPlanContable(this.buscarCodPlanContable);
+        //como hacer para llenar los inputs con los datos que trae la consulta. ¿Seria limpiar las variables actuales?
+        return planContable;
+    }
 }

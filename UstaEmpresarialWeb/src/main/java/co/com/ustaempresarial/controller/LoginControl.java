@@ -13,7 +13,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
-import org.primefaces.context.RequestContext;
+//import org.primefaces.context.RequestContext;
 
 import co.com.facturacion.modelo.UsuarioLogin;
 import co.com.ustaempresarial.servicio.AutenticacionServicio;
@@ -59,7 +59,7 @@ public class LoginControl implements Serializable {
 			String usaux= (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(AUTH_KEY);
 			if(usaux==null||usaux.compareTo("")==0){
 				try {
-					usuarioLogin = autenticacionServicio.consultarUsuario(user, pass);
+//					usuarioLogin = autenticacionServicio.consultarUsuario(user, pass);
 					if(usuarioLogin!=null) {
 						FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(AUTH_KEY,user);
 						login="/pages/comun/principal.faces";
