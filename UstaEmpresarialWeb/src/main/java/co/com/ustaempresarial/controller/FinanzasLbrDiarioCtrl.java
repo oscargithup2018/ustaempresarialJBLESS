@@ -19,7 +19,7 @@ import java.util.List;
 @ManagedBean
 @SessionScoped
 @ViewScoped
-public class FinanzasControl implements Serializable {
+public class FinanzasLbrDiarioCtrl implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
