@@ -25,31 +25,31 @@
                                                 <div class="col-5">
                                                     <p:outputLabel for="codPlan" value="#{msg.codPlan}"/>
                                                     <p:inputText id="codPlan"
-                                                                 value="#{finanzasPlanContableCtrl.codigo}"/>
+                                                                 value="#{planContableFinananzas.planContable.codigo}"/>
 
                                                     <p:outputLabel for="nombrePlan" value="#{msg.nombrePlan}"/>
                                                     <p:inputText id="nombrePlan"
-                                                                 value="#{finanzasPlanContableCtrl.nombre}"/>
+                                                                 value="#{planContableFinananzas.planContable.nombre}"/>
 
                                                     <p:outputLabel for="desPlan" value="#{msg.descripcionPlan}"/>
                                                     <p:inputText id="desPlan"
-                                                                 value="#{finanzasPlanContableCtrl.descripcion}"/>
+                                                                 value="#{planContableFinananzas.planContable.descripcion}"/>
 
                                                     <p:outputLabel for="tipoPlan" value="#{msg.tipoPlan}"/>
                                                     <p:inputText id="tipoPlan"
-                                                                 value="#{finanzasPlanContableCtrl.tipo}"/>
+                                                                 value="#{planContableFinananzas.planContable.tipo}"/>
 
                                                     <p:outputLabel for="vigePlan" value="#{msg.vigenciaPlan}"/>
-                                                    <p:inputText id="vigePlan"
-                                                                 value="#{finanzasPlanContableCtrl.vigencia}"/>
+                                                    <p:calendar  showOn="button" id="vigePlan"
+                                                                 value="#{planContableFinananzas.planContable.vigencia}"/>
 
                                                     <p:outputLabel for="codPadrePlan" value="#{msg.codPadrePlan}"/>
                                                     <p:inputText id="codPadrePlan"
-                                                                 value="#{finanzasPlanContableCtrl.codigoPadre}"/>
+                                                                 value="#{planContableFinananzas.planContable.codigoPadre}"/>
                                                 </div>
                                                 <div align="center">
                                                     <p:commandButton value="#{msg.botonGuardar}"
-                                                                     action="#{finanzasPlanContableCtrl.crearPlanContable()}"
+                                                                     action="#{planContableFinananzas.crearPlanContable()}"
                                                                      icon="ui-icon-extlink"/>
                                                 </div>
 

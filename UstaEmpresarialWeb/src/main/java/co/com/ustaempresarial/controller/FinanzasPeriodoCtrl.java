@@ -29,8 +29,6 @@ private Periodo periodoContable;
 @EJB
 private FinanzasServicio servicio;
 
-
-
 public FinanzasPeriodoCtrl() {
 	super();
 	periodoContable= new Periodo();

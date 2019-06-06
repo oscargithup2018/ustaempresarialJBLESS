@@ -8,46 +8,42 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
-@ManagedBean
+@ManagedBean(name = "planContableFinananzas")
 @SessionScoped
 @ViewScoped
 public class FinanzasPlanContableCtrl implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer codigo;
-    private Integer codigoPadre;
-    private String descripcion;
-    private String nombre;
-    private Integer tipo;
     private List<PlanContable> planContables;
     private int buscarCodPlanContable;
-
-    @Temporal(TemporalType.DATE)
-    private Date vigencia;
+    private PlanContable planContable;
 
     @EJB
-//    @ManagedProperty("#{finanzasService}")
     private FinanzasServicio servicio;
+
+    public FinanzasPlanContableCtrl() {
+        super();
+        planContable = new PlanContable();
+        planContables = new ArrayList<PlanContable>();
+    }
+
+    @PostConstruct
+    public void init() throws Exception {
+        try {
+            planContables = servicio.listarPlanContable();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void crearPlanContable() {
         try {
-            PlanContable planContable = new PlanContable();
-            planContable.setCodigo(codigo);
-            planContable.setCodigoPadre(codigoPadre);
-            planContable.setDescripcion(descripcion);
-            planContable.setNombre(nombre);
-            planContable.setTipo(tipo);
-            planContable.setVigencia(vigencia);
-            servicio.crearPlanContable(planContable);
+            servicio.crearPlanContable(this.planContable);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -67,66 +63,6 @@ public class FinanzasPlanContableCtrl implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    @PostConstruct
-    public void init() throws Exception {
-        planContables = servicio.listarPlanContable();
-    }
-
-    public Integer getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
-    }
-
-    public Integer getCodigoPadre() {
-        return codigoPadre;
-    }
-
-    public void setCodigoPadre(Integer codigoPadre) {
-        this.codigoPadre = codigoPadre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Integer getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(Integer tipo) {
-        this.tipo = tipo;
-    }
-
-    public Date getVigencia() {
-        return vigencia;
-    }
-
-    public void setVigencia(String vigencia) {
-        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
-        Date fecha = null;
-        try {
-            fecha = formatoDelTexto.parse(vigencia);
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-        }
-        this.vigencia = fecha;
     }
 
     public List<PlanContable> getPlanContables() {
@@ -149,5 +85,13 @@ public class FinanzasPlanContableCtrl implements Serializable {
         PlanContable planContable = servicio.buscarPlanContable(this.buscarCodPlanContable);
         //como hacer para llenar los inputs con los datos que trae la consulta. ¿Seria limpiar las variables actuales?
         return planContable;
+    }
+
+    public PlanContable getPlanContable() {
+        return planContable;
+    }
+
+    public void setPlanContable(PlanContable planContable) {
+        this.planContable = planContable;
     }
 }
