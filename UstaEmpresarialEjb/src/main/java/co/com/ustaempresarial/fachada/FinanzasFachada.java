@@ -217,7 +217,7 @@ interface FinanzasFachada {
      * @param PlanContable
      * @throws Exception Capturar errores posibles sobre ejecicion
      */
-    void crearPlanContable(PlanContable plan_contable) throws Exception;
+    boolean crearPlanContable(PlanContable plan_contable) throws Exception;
 
     /**
      * Metodo que actualiza un PlanContable

@@ -152,6 +152,7 @@ public class FinanzasBean implements FinanzasFachada {
 
     /**
      * Busca un plan contable por su código identificador
+     *
      * @param codigo
      * @return
      * @throws Exception
@@ -479,7 +480,7 @@ public class FinanzasBean implements FinanzasFachada {
      * @param Objeto plan_contable.
      * @throws Exception Capturar errores posibles sobre ejecución.
      */
-    public void crearPlanContable(PlanContable plan_contable) throws Exception {
+    public boolean crearPlanContable(PlanContable plan_contable) throws Exception {
         LogCuenta logNuevo = new LogCuenta();
         logNuevo.setCodigoCuentaNueva(plan_contable.getCodigo());
         logNuevo.setDescripcionCuentaNueva(plan_contable.getDescripcion());
@@ -490,7 +491,9 @@ public class FinanzasBean implements FinanzasFachada {
             em.persist(logNuevo);
             em.persist(plan_contable);
             em.flush();
+            return true;
         }
+        return false;
     }
 
     /**
@@ -534,8 +537,8 @@ public class FinanzasBean implements FinanzasFachada {
      * @throws Exception Capturar errores posibles sobre ejecución.
      */
     public List<PlanContable> listarPlanContable() throws Exception {
-        List<PlanContable> plan_contable;
-        Query q = em.createNamedQuery(PlanContable.LISTARPLANCONTABLE);
+        List<PlanContable> plan_contable = new ArrayList<PlanContable>();
+        Query q = em.createNamedQuery(PlanContable.LISTAR_PLANCONTABLE);
         plan_contable = q.getResultList();
         return plan_contable;
     }
@@ -550,14 +553,12 @@ public class FinanzasBean implements FinanzasFachada {
     public PlanContable listarPlanContablePorNombre(String nombre) throws Exception {
         PlanContable objPlanContable = new PlanContable();
         if (nombre != null && !nombre.equals("")) {
-            Query q = em.createNamedQuery(PlanContable.LISTARPLANCONTABLEBYNAME).setParameter("nombre", nombre);
+            Query q = em.createNamedQuery(PlanContable.LISTAR_PLANCONTABLE_BYNAME).setParameter("nombre", nombre);
             Object obj = q.getSingleResult();
             objPlanContable = (PlanContable) obj;
         }
         return objPlanContable;
     }
-
-
 
 
 }

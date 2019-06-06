@@ -3,14 +3,8 @@ package co.com.ustaempresarial.servicio;
 import co.com.ustaempresarial.fachada.FinanzasFachada;
 import co.com.ustaempresarial.finanzas.modelo.*;
 
-import javax.ejb.EJB;
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
-import javax.faces.bean.ManagedBean;
+import javax.ejb.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Stateless
@@ -18,7 +12,7 @@ import java.util.List;
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 public class FinanzasServicio {
 
-	@EJB
+    @EJB
     FinanzasFachada fachada;
 
     /**
@@ -260,8 +254,8 @@ public class FinanzasServicio {
      * @param plan_contable
      * @throws Exception Capturar errores posibles sobre ejecucion
      */
-    public void crearPlanContable(PlanContable plan_contable) throws Exception {
-        fachada.crearPlanContable(plan_contable);
+    public boolean crearPlanContable(PlanContable plan_contable) throws Exception {
+        return  fachada.crearPlanContable(plan_contable);
     }
 
 
@@ -296,18 +290,18 @@ public class FinanzasServicio {
      */
     public List<PlanContable> listarPlanContable() throws Exception {
         List<PlanContable> planContables = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            PlanContable planContable = new PlanContable();
-            planContable.setCodigo(1000000 + i);
-            planContable.setNombre("prueba");
-            planContable.setDescripcion("Es una prueba");
-            planContable.setTipo(1);
-            planContable.setVigencia(new Date());
-            planContable.setCodigoPadre(1);
-            planContables.add(planContable);
-        }
-//        return fachada.listarPlanContable();
-        return planContables;
+//        for (int i = 0; i < 10; i++) {
+//            PlanContable planContable = new PlanContable();
+//            planContable.setCodigo(1000000 + i);
+//            planContable.setNombre("prueba");
+//            planContable.setDescripcion("Es una prueba");
+//            planContable.setTipo(1);
+//            planContable.setVigencia(new Date());
+//            planContable.setCodigoPadre(1);
+//            planContables.add(planContable);
+//        }
+        return fachada.listarPlanContable();
+//        return planContables;
     }
 
 
@@ -324,11 +318,12 @@ public class FinanzasServicio {
 
     /**
      * Busca un plan contable por su código identificador
+     *
      * @param codigo
      * @return
      * @throws Exception
      */
-    public PlanContable buscarPlanContable (int codigo) throws Exception {
+    public PlanContable buscarPlanContable(int codigo) throws Exception {
         return fachada.buscarPlanContable(codigo);
     }
 
