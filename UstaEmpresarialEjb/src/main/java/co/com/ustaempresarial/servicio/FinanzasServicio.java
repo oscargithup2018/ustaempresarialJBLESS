@@ -3,6 +3,7 @@ package co.com.ustaempresarial.servicio;
 import co.com.ustaempresarial.fachada.FinanzasFachada;
 import co.com.ustaempresarial.finanzas.modelo.*;
 
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -15,9 +16,9 @@ import java.util.List;
 @Stateless
 @LocalBean
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-@ManagedBean(name = "finanzasService")
 public class FinanzasServicio {
 
+	@EJB
     FinanzasFachada fachada;
 
     /**
