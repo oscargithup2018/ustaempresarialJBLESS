@@ -34,7 +34,7 @@ public class FinanzasServicio {
      * @param LibroDiario
      * @throws Exception Capturar errores posibles osbre ejecuci�n
      */
-    public void crearLibroDiarior(LibroDiario LibroDiario) throws Exception {
+    public void crearLibroDiario(LibroDiario LibroDiario) throws Exception {
         fachada.crearLibroDiario(LibroDiario);
     }
 

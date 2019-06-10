@@ -140,7 +140,65 @@
 
                         </p:panel>
                     </p:tab>
-                    <p:tab title="#{msg.tabLibroDiario}">
+                     <p:tab title="#{msg.tabLibroDiario}">
+                        <p:panel>
+                            <p:panelGrid columns="1" layout="grid">
+                                <h3>Crear Libro Diario</h3>
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p:outputLabel for="codPadreP" value="#{msg.codPadrePeriodo}"/>
+                                        <p:inputText id="codPadreP" value="#{libroDiarioFinananzas.libroDiario.periodoCod}"/>
+
+                                        <p:outputLabel for="codPadreC" value="#{msg.codPadreConcepto}"/>
+                                        <p:inputText id="codPadreC" value="#{libroDiarioFinananzas.libroDiario.conceptoCod}"/>
+
+                                        <p:outputLabel for="asiento" value="#{msg.asiento}"/>
+                                        <p:inputText id="asiento" value="#{libroDiarioFinananzas.libroDiario.asiento}"/>
+
+                                        <p:outputLabel for="fecha" value="#{msg.fecha}"/>
+                                        <p:calendar id="fecha" value="#{libroDiarioFinananzas.libroDiario.fecha}" showOn="button"/>
+
+                                        <p:outputLabel for="valor" value="#{msg.valor}"/>
+                                        <p:inputText id="valor" value="#{libroDiarioFinananzas.libroDiario.valor}"/>
+
+                                        <p:outputLabel for="estado" value="#{msg.estado}"/>
+                                        <p:inputText id="estado" value="#{libroDiarioFinananzas.libroDiario.estado}"/>
+                                    </div>
+                                    <div align="center">
+                                        <p:commandButton value="#{msg.botonGuardar}" action="#{planContableFinananzas.crearPlanContable()}" icon="ui-icon-extlink" update="@form,listPlanContable"/>
+                                    </div>
+
+                                </div>
+                            </p:panelGrid>
+                        </p:panel>
+                        <h3>Listado de Planes Contables</h3>
+                        <p:dataTable id="listLibroDiario" var="listadoLd" value="#{libroDiarioFinananzas.libroDiarios}">
+                            <p:column headerText="codPadrePeriodo">
+                                <h:outputText value="#{listadoLd.periodoCod}"/>
+                            </p:column>
+
+                            <p:column headerText="codPadreConcepto">
+                                <h:outputText value="#{listadoLd.conceptoCod}"/>
+                            </p:column>
+
+                            <p:column headerText="asiento">
+                                <h:outputText value="#{listadoLd.asiento}"/>
+                            </p:column>
+
+                            <p:column headerText="fecha">
+                                <h:outputText value="#{listadoLd.fecha}"/>
+                            </p:column>
+
+                            <p:column headerText="valor">
+                                <h:outputText value="#{listadoLd.valor}"/>
+                            </p:column>
+
+                            <p:column headerText="estado">
+                                <h:outputText value="#{listadoLd.estado}"/>
+                            </p:column>
+                        </p:dataTable>
+<!--                        <p:commandButton value="#{msg.botonCrear}" action="" icon="ui-icon-extlink"/>-->
+<!--                        <p:commandButton value="#{msg.botonEditar}" action="" icon="ui-icon-extlink"/>-->
                     </p:tab>
                     <p:tab title="#{msg.tabLibroMayor}">
                     </p:tab>
