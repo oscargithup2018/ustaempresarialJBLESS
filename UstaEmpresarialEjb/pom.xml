@@ -61,6 +61,7 @@
 			<groupId>UstaEmpresarial</groupId>
 			<artifactId>FinanzasModelo</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>UstaEmpresarial</groupId>

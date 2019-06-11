@@ -102,7 +102,7 @@ public interface FinanzasFachada {
      * @return Objeto LibroMayor
      * @throws Exception Capturar errores posibles osbre ejecuci�n
      */
-    LibroMayor listarLibroMayorByNombre(String nombre) throws Exception;
+    LibroMayor listarLibroMayorById(int id) throws Exception;
 
     /**
      * Metodo que busca LibroMayor por nombre

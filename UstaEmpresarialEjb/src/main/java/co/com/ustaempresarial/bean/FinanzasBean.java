@@ -199,10 +199,10 @@ public class FinanzasBean implements FinanzasFachada {
      * @throws Exception Capturar errores posibles sobre ejecución.
      */
     @Override
-    public LibroMayor listarLibroMayorByNombre(String nombre) throws Exception {
+    public LibroMayor listarLibroMayorById (int id) throws Exception {
         LibroMayor objLibroMayor = new LibroMayor();
-        if (nombre != null && !nombre.equals("")) {
-            Query q = em.createNamedQuery(LibroMayor.LISTARLibroMayorBYNAME).setParameter("nombre", nombre);
+        if (id != 0) {
+            Query q = em.createNamedQuery(LibroMayor.LISTARLibroMayorBYID).setParameter("id", id);
             Object obj = q.getSingleResult();
             objLibroMayor = (LibroMayor) obj;
         }
@@ -220,7 +220,7 @@ public class FinanzasBean implements FinanzasFachada {
     public List<LibroMayor> listarLibroMayorsByNombre(String nombre) throws Exception {
         List<LibroMayor> listLibroMayor = new ArrayList<LibroMayor>();
         if (nombre != null && !nombre.equals("")) {
-            Query q = em.createNamedQuery(LibroMayor.LISTARLibroMayorBYNAME).setParameter("nombre", nombre);
+            Query q = em.createNamedQuery(LibroMayor.LISTARLibroMayorBYID).setParameter("nombre", nombre);
             listLibroMayor = q.getResultList();
         }
         return listLibroMayor;
