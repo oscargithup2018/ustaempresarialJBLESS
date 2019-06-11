@@ -6,8 +6,7 @@ import javax.ejb.Remote;
 import java.util.List;
 
 @Remote
-public
-interface FinanzasFachada {
+public interface FinanzasFachada {
 
     /**
      * Metodo que lista las LibroDiarios

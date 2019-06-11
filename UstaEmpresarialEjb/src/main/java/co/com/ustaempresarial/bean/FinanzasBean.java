@@ -47,9 +47,12 @@ public class FinanzasBean implements FinanzasFachada {
      */
     @Override
     public List<LibroDiario> listarLibroDiario() throws Exception {
-        List<LibroDiario> libroDiario = new ArrayList<>();
+        List<LibroDiario> libroDiario = new ArrayList<LibroDiario>();
         Query q = em.createNamedQuery(LibroDiario.LISTARLibroDiario);
         libroDiario = q.getResultList();
+        if(libroDiario.size()<= 0){
+            libroDiario = null;
+        }
         return libroDiario;
     }
 
@@ -64,9 +67,7 @@ public class FinanzasBean implements FinanzasFachada {
     public LibroDiario listalibroDiarioByNombre(String nombre) throws Exception {
         LibroDiario objlibroDiario = new LibroDiario();
         if (nombre != null && !nombre.equals("")) {
-            Query q = em.createNamedQuery
-
-                    (LibroDiario.LISTARLibroDiarioBYNAME).setParameter("nombre", nombre);
+            Query q = em.createNamedQuery (LibroDiario.LISTARLibroDiarioBYNAME).setParameter("nombre", nombre);
             Object obj = q.getSingleResult();
             objlibroDiario = (LibroDiario) obj;
         }
@@ -85,10 +86,7 @@ public class FinanzasBean implements FinanzasFachada {
     public List<LibroDiario> listarLibroDiariosByNombre(String nombre) throws Exception {
         List<LibroDiario> listLibroDiario = new ArrayList<>();
         if (nombre != null && !nombre.equals("")) {
-            Query q = em.createNamedQuery
-
-                    (LibroDiario.LISTARLibroDiarioBYNAME).setParameter("nombre", nombre);
-
+            Query q = em.createNamedQuery (LibroDiario.LISTARLibroDiarioBYNAME).setParameter("nombre", nombre);
             listLibroDiario = q.getResultList();
         }
         return listLibroDiario;
@@ -184,9 +182,12 @@ public class FinanzasBean implements FinanzasFachada {
      */
     @Override
     public List<LibroMayor> listarLibroMayor() throws Exception {
-        List<LibroMayor> libroMayor;
+        List<LibroMayor> libroMayor = new ArrayList<LibroMayor>();
         Query q = em.createNamedQuery(LibroMayor.LISTARLibroMayor);
         libroMayor = q.getResultList();
+        if(libroMayor.size()<=0) {
+            libroMayor = null;
+        }
         return libroMayor;
     }
 
@@ -217,7 +218,7 @@ public class FinanzasBean implements FinanzasFachada {
      */
     @Override
     public List<LibroMayor> listarLibroMayorsByNombre(String nombre) throws Exception {
-        List<LibroMayor> listLibroMayor = new ArrayList<>();
+        List<LibroMayor> listLibroMayor = new ArrayList<LibroMayor>();
         if (nombre != null && !nombre.equals("")) {
             Query q = em.createNamedQuery(LibroMayor.LISTARLibroMayorBYNAME).setParameter("nombre", nombre);
             listLibroMayor = q.getResultList();
@@ -346,10 +347,12 @@ public class FinanzasBean implements FinanzasFachada {
      * @throws Exception Capturar errores posibles sobre ejecución.
      */
     public List<Periodo> listarPeriodo() throws Exception {
-
-        List<Periodo> periodo;
+        List<Periodo> periodo  = new ArrayList<Periodo>();
         Query q = em.createNamedQuery(Periodo.LISTARPERIODO);
         periodo = q.getResultList();
+        if(periodo.size()<= 0){
+            periodo = null;
+        }
         return periodo;
     }
 
@@ -441,6 +444,9 @@ public class FinanzasBean implements FinanzasFachada {
         List<Concepto> concepto;
         Query q = em.createNamedQuery(Concepto.LISTARCONCEPTO);
         concepto = q.getResultList();
+        if(concepto.size()<=0){
+            concepto = null;
+        }
         return concepto;
     }
 
@@ -540,6 +546,9 @@ public class FinanzasBean implements FinanzasFachada {
         List<PlanContable> plan_contable = new ArrayList<PlanContable>();
         Query q = em.createNamedQuery(PlanContable.LISTAR_PLANCONTABLE);
         plan_contable = q.getResultList();
+        if(plan_contable.size()<= 0){
+            plan_contable = null;
+        }
         return plan_contable;
     }
 
