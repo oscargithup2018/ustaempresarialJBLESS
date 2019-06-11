@@ -18,7 +18,7 @@ import java.util.List;
 
 @ManagedBean
 @SessionScoped
-@ViewScoped
+//@ViewScoped
 public class FinanzasConceptoCtrl implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -70,7 +70,7 @@ public class FinanzasConceptoCtrl implements Serializable {
     }
 
     @PostConstruct
-    public void init() throws Exception {
+    public void cargarPlanContablePage() throws Exception {
         planContables = servicio.listarPlanContable();
     }
 

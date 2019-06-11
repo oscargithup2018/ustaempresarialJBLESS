@@ -16,7 +16,6 @@ import co.com.ustaempresarial.servicio.FinanzasServicio;
 
 @ManagedBean(name="periodoFinanzas")
 @SessionScoped
-@ViewScoped
 public class FinanzasPeriodoCtrl implements Serializable {
 private Integer codigo;
 private boolean estado;
@@ -36,7 +35,7 @@ public FinanzasPeriodoCtrl() {
 }
 
 @PostConstruct
-public void init() {
+public void cargarPeriodoPage() {
 	try {
 		periodos=servicio.listarPeriodo();	
 	} catch (Exception e) {

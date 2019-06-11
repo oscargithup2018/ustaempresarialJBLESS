@@ -18,7 +18,6 @@ import java.util.List;
 
 @ManagedBean
 @SessionScoped
-@ViewScoped
 public class FinanzasLogCuentasCtrl implements Serializable {
 
     private static final long serialVersionUID = 1L;

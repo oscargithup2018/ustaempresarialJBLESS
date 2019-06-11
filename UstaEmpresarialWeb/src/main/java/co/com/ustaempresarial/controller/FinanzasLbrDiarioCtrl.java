@@ -38,7 +38,7 @@ public class FinanzasLbrDiarioCtrl implements Serializable {
     }
 
     @PostConstruct
-    public void init() throws Exception {
+    public void cargarLbrDiarioPage() throws Exception {
         try {
         	  libroDiario = new LibroDiario();
               libroDiarios = new ArrayList<>();
