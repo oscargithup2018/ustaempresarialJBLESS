@@ -9,7 +9,7 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@Table(name="concepto", schema="\"FINANZAS\"")
+@Table(name="\"concepto\"", schema="\"finanzas\"", catalog = "\"usta_empresarial\"")
 public class Concepto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -20,7 +20,7 @@ public class Concepto implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer codigo;
 
-	private String descrpcion;
+	private String descripcion;
 
 	private Boolean estado;
 
@@ -42,12 +42,12 @@ public class Concepto implements Serializable {
 		this.codigo = codigo;
 	}
 
-	public String getDescrpcion() {
-		return this.descrpcion;
+	public String getDescripcion() {
+		return this.descripcion;
 	}
 
-	public void setDescrpcion(String descrpcion) {
-		this.descrpcion = descrpcion;
+	public void setDescripcion(String descrpcion) {
+		this.descripcion = descrpcion;
 	}
 
 	public Boolean getEstado() {

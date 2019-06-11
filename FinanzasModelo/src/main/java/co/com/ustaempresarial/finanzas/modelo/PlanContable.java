@@ -10,7 +10,7 @@ import java.util.Date;
  * 
  */
 @Entity
-@Table(name="plan_contable", schema="\"FINANZAS\"")
+@Table(name="\"plan_contable\"", schema="\"finanzas\"", catalog = "\"usta_empresarial\"")
 public class PlanContable implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

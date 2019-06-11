@@ -11,7 +11,7 @@ import java.util.Date;
  * 
  */
 @Entity
-@Table(name="libro_mayor", schema="\"FINANZAS\"")
+@Table(name="\"libro_mayor\"", schema="\"finanzas\"", catalog = "\"usta_empresarial\"")
 public class LibroMayor implements Serializable {
 	private static final long serialVersionUID = 1L;
 

@@ -10,8 +10,7 @@ import java.util.Date;
  * 
  */
 @Entity
-@Table(name="log_cuentas")
-@NamedQuery(name="LogCuenta.findAll", query="SELECT l FROM LogCuenta l")
+@Table(name="\"log_cuentas\"", schema = "\"finanzas\"", catalog = "\"usta_empresarial\"")
 public class LogCuenta implements Serializable {
 	private static final long serialVersionUID = 1L;
 
