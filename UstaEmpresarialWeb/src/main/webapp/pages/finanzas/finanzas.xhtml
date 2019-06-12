@@ -63,7 +63,7 @@
                         <h3>Listado de planes contables</h3>
                         <p:dataTable id="listPlanContable" var="listadoPc"
                                      value="#{planContableFinananzas.planContables}">
-                            <p:column headerText="Codigo">
+                            <p:column headerText="Código">
                                 <h:outputText value="#{listadoPc.codigo}"/>
                             </p:column>
 
@@ -71,7 +71,7 @@
                                 <h:outputText value="#{listadoPc.nombre}"/>
                             </p:column>
 
-                            <p:column headerText="Descripcion">
+                            <p:column headerText="Descripción">
                                 <h:outputText value="#{listadoPc.descripcion}"/>
                             </p:column>
 
@@ -104,12 +104,12 @@
                                                          value="#{periodoFinanzas.periodoContable.codigo}"/>
 
                                             <p:outputLabel for="fechaInicio" value="#{msg.fechaIni}"/>
-                                            <p:inputText id="fechaInicio"
-                                                         value="#{periodoFinanzas.periodoContable.fechaInicio}"/>
+                                            <p:calendar id="fechaInicio"
+                                                         value="#{periodoFinanzas.periodoContable.fechaInicio}" showOn="button"/>
 
                                             <p:outputLabel for="fechaFin" value="#{msg.fechaFin}"/>
-                                            <p:inputText id="fechaFin"
-                                                         value="#{periodoFinanzas.periodoContable.fechaFin}"/>
+                                            <p:calendar id="fechaFin"
+                                                         value="#{periodoFinanzas.periodoContable.fechaFin}" showOn="button"/>
 
                                             <p:outputLabel for="Estado" value="#{msg.estadoPeri}"/>
                                             <p:inputText id="Estado"
@@ -128,7 +128,7 @@
                             <p:tab title="Listado de movimientos contables">
                                 <p:dataTable var="fc"
                                              value="#{finanzasPlanContableCtrl.planContables}">
-                                    <p:column headerText="Codigo">
+                                    <p:column headerText="Código">
                                         <h:outputText value="#{fc.codigo}"/>
                                     </p:column>
 
@@ -136,7 +136,7 @@
                                         <h:outputText value="#{fc.nombre}"/>
                                     </p:column>
 
-                                    <p:column headerText="Descripcion">
+                                    <p:column headerText="Descripción">
                                         <h:outputText value="#{fc.descripcion}"/>
                                     </p:column>
 
@@ -176,8 +176,8 @@
 
 
                                         <p:outputLabel for="fechaLibroMayor" value="#{msg.FechaLibro}"/>
-                                        <p:inputText id="fechaLibroMayor"
-                                                     value="#{libroMayorFinanzas.libroMayor.fecha} "/>
+                                        <p:calendar id="fechaLibroMayor"
+                                                     value="#{libroMayorFinanzas.libroMayor.fecha}" showOn="button"/>
 
                                         <p:outputLabel for="EstadoLibroMayor" value="#{msg.EstadoLibro}"/>
                                         <p:inputText id="EstadoLibroMayor"
@@ -233,27 +233,27 @@
                         </p:panel>
                         <h3>Listado Libro diario</h3>
                         <p:dataTable id="listLibroDiario" var="listadoLd" value="#{libroDiarioFinananzas.libroDiarios}">
-                            <p:column headerText="codPadrePeriodo">
+                            <p:column headerText="CodPadrePeriodo">
                                 <h:outputText value="#{listadoLd.periodoCod}"/>
                             </p:column>
 
-                            <p:column headerText="codPadreConcepto">
+                            <p:column headerText="CodPadreConcepto">
                                 <h:outputText value="#{listadoLd.conceptoCod}"/>
                             </p:column>
 
-                            <p:column headerText="asiento">
+                            <p:column headerText="Asiento">
                                 <h:outputText value="#{listadoLd.asiento}"/>
                             </p:column>
 
-                            <p:column headerText="fecha">
+                            <p:column headerText="Fecha">
                                 <h:outputText value="#{listadoLd.fecha}"/>
                             </p:column>
 
-                            <p:column headerText="valor">
+                            <p:column headerText="Valor">
                                 <h:outputText value="#{listadoLd.valor}"/>
                             </p:column>
 
-                            <p:column headerText="estado">
+                            <p:column headerText="Estado">
                                 <h:outputText value="#{listadoLd.estado}"/>
                             </p:column>
                         </p:dataTable>
