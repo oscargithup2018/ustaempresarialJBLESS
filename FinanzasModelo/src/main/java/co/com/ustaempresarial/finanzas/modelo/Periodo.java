@@ -10,7 +10,7 @@ import java.util.Date;
  * 
  */
 @Entity
-@Table(name="\"periodo\"", schema="\"finanzas\"", catalog = "\"usta_empresarial\"")
+@Table(name="periodo", schema="finanzas")
 public class Periodo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

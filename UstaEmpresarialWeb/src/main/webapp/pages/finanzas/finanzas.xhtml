@@ -14,7 +14,6 @@
                 <h:outputLabel value="AL SISTEMA DE FINANZAS"/>
             </div>
             <h:form>
-
                 <p:tabView>
                     <p:tab title="#{msg.tabPlanContable}">
                         <h:form id="formPlanContable">
@@ -261,6 +260,77 @@
                         <!--                        <p:commandButton value="#{msg.botonEditar}" action="" icon="ui-icon-extlink"/>-->
                     </p:tab>
                     <p:tab title="#{msg.tabLogCuentas}">
+                        <h:form id="formLogCuentas">
+                            <p:panel>
+                                <p:panelGrid columns="1" layout="grid">
+                                    <h3>Crear Log Cuentas</h3>
+<!--                                    <div class="row">-->
+<!--                                        <div class="col-5">-->
+<!--                                            <p:outputLabel for="codPlan" value="#{msg.codPlan}"/>-->
+<!--                                            <p:inputText id="codPlan"-->
+<!--                                                         value="#{planContableFinananzas.planContable.codigo}"/>-->
+
+<!--                                            <p:outputLabel for="nombrePlan" value="#{msg.nombrePlan}"/>-->
+<!--                                            <p:inputText id="nombrePlan"-->
+<!--                                                         value="#{planContableFinananzas.planContable.nombre}"/>-->
+
+<!--                                            <p:outputLabel for="desPlan" value="#{msg.descripcionPlan}"/>-->
+<!--                                            <p:inputText id="desPlan"-->
+<!--                                                         value="#{planContableFinananzas.planContable.descripcion}"/>-->
+
+<!--                                            <p:outputLabel for="tipoPlan" value="#{msg.tipoPlan}"/>-->
+<!--                                            <p:inputText id="tipoPlan"-->
+<!--                                                         value="#{planContableFinananzas.planContable.tipo}"/>-->
+
+<!--                                            <p:outputLabel for="vigePlan" value="#{msg.vigenciaPlan}"/>-->
+<!--                                            <p:calendar id="vigePlan"-->
+<!--                                                        value="#{planContableFinananzas.planContable.vigencia}"-->
+<!--                                                        showOn="button"/>-->
+
+<!--                                            <p:outputLabel for="codPadrePlan" value="#{msg.codPadrePlan}"/>-->
+<!--                                            <p:inputText id="codPadrePlan"-->
+<!--                                                         value="#{planContableFinananzas.planContable.codigoPadre}"/>-->
+<!--                                        </div>-->
+<!--                                        <div align="center">-->
+<!--                                            <p:commandButton value="#{msg.botonGuardar}"-->
+<!--                                                             action="#{planContableFinananzas.crearPlanContable()}"-->
+<!--                                                             icon="ui-icon-extlink"/>-->
+<!--                                            &lt;!&ndash;                                                         icon="ui-icon-extlink" update="@listPlanContable"/>&ndash;&gt;-->
+<!--                                        </div>-->
+
+<!--                                    </div>-->
+                                </p:panelGrid>
+                            </p:panel>
+                        </h:form>
+
+                        <h3>Listado de planes contables</h3>
+<!--                        <p:dataTable id="listLogCuenta" var="listadoPc"-->
+<!--                                     value="#{planContableFinananzas.planContables}">-->
+<!--                            <p:column headerText="Código">-->
+<!--                                <h:outputText value="#{listadoPc.codigo}"/>-->
+<!--                            </p:column>-->
+
+<!--                            <p:column headerText="Nombre">-->
+<!--                                <h:outputText value="#{listadoPc.nombre}"/>-->
+<!--                            </p:column>-->
+
+<!--                            <p:column headerText="Descripción">-->
+<!--                                <h:outputText value="#{listadoPc.descripcion}"/>-->
+<!--                            </p:column>-->
+
+<!--                            <p:column headerText="Tipo">-->
+<!--                                <h:outputText value="#{listadoPc.tipo}"/>-->
+<!--                            </p:column>-->
+
+<!--                            <p:column headerText="Vigencia">-->
+<!--                                <h:outputText value="#{listadoPc.vigencia}"/>-->
+<!--                            </p:column>-->
+
+<!--                            <p:column headerText="Padre">-->
+<!--                                <h:outputText value="#{listadoPc.codigoPadre}"/>-->
+<!--                            </p:column>-->
+<!--                        </p:dataTable>-->
+
                     </p:tab>
                 </p:tabView>
             </h:form>

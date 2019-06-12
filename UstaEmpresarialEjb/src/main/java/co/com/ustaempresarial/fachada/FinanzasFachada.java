@@ -96,23 +96,13 @@ public interface FinanzasFachada {
     boolean eliminarLibroMayor(int codigo) throws Exception;
 
     /**
-     * Metodo que busca LibroMayor por nombre
+     * Metodo que busca LibroMayor por id
      *
      * @param nombre del LibroMayor
      * @return Objeto LibroMayor
      * @throws Exception Capturar errores posibles osbre ejecuci�n
      */
-    LibroMayor listarLibroMayorById(int id) throws Exception;
-
-    /**
-     * Metodo que busca LibroMayor por nombre
-     *
-     * @param nombre del LibroMayor
-     * @return Objeto LibroMayor
-     * @throws Exception Capturar errores posibles osbre ejecuci�n
-     */
-    List<LibroMayor> listarLibroMayorsByNombre(String nombre) throws Exception;
-
+    List<LibroMayor> listarLibroMayorById(int id) throws Exception;
 
     /**
      * Metodo que lista los Periodo

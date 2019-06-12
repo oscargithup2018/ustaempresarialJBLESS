@@ -11,7 +11,7 @@ import java.util.Date;
  * 
  */
 @Entity
-@Table(name="\"libro_diario\"", schema="\"finanzas\"", catalog = "\"usta_empresarial\"")
+@Table(name="libro_diario", schema="finanzas")
 public class LibroDiario implements Serializable {
 	private static final long serialVersionUID = 1L;
 

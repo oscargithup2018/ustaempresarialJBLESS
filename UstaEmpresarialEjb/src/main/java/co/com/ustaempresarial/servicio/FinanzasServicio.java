@@ -128,8 +128,8 @@ public class FinanzasServicio {
      * @return Objeto LibroMayor
      * @throws Exception Capturar errores posibles osbre ejecuci�n
      */
-    public List<LibroMayor> listarLibroMayorsByNombre(String nombre) throws Exception {
-        return fachada.listarLibroMayorsByNombre(nombre);
+    public List<LibroMayor> listarLibroMayorById(int id) throws Exception {
+        return fachada.listarLibroMayorById(id);
     }
 
 

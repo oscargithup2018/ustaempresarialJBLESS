@@ -42,7 +42,7 @@
         <query>
             SELECT lm
             FROM LibroMayor lm
-            WHERE lm.id = '%:id%'
+            WHERE lm.id = :id
         </query>
     </named-query>
 
