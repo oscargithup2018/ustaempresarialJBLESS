@@ -60,7 +60,7 @@
                             </p:panel>
                         </h:form>
 
-                        <h3>Listado de Planes Contables</h3>
+                        <h3>Listado de planes contables</h3>
                         <p:dataTable id="listPlanContable" var="listadoPc"
                                      value="#{planContableFinananzas.planContables}">
                             <p:column headerText="Codigo">
@@ -198,7 +198,7 @@
                     <p:tab title="#{msg.tabLibroDiario}">
                         <p:panel>
                             <p:panelGrid columns="1" layout="grid">
-                                <h3>Crear Libro Diario</h3>
+                                <h3>Crear libro diario</h3>
                                 <div class="row">
                                     <div class="col-5">
                                         <p:outputLabel for="codPadreP" value="#{msg.codPadrePeriodo}"/>
@@ -231,7 +231,7 @@
                                 </div>
                             </p:panelGrid>
                         </p:panel>
-                        <h3>Listado de Libros Diarios</h3>
+                        <h3>Listado Libro diario</h3>
                         <p:dataTable id="listLibroDiario" var="listadoLd" value="#{libroDiarioFinananzas.libroDiarios}">
                             <p:column headerText="codPadrePeriodo">
                                 <h:outputText value="#{listadoLd.periodoCod}"/>

@@ -61,7 +61,7 @@ public class FinanzasLbrDiarioCtrl implements Serializable {
         }
     }
 
-    public void modificarPlanContable() {
+    public void modificarLibroDiario() {
         try {
 
         } catch (Exception e) {
@@ -69,7 +69,7 @@ public class FinanzasLbrDiarioCtrl implements Serializable {
         }
     }
 
-    public void eliminarPlanContable() {
+    public void eliminarLibroDiario() {
         try {
 
         } catch (Exception e) {
@@ -79,24 +79,6 @@ public class FinanzasLbrDiarioCtrl implements Serializable {
 
     public List<LibroDiario> getLibroDiarios() {
         return libroDiarios;
-    }
-
-    public void setService(FinanzasServicio servicio) {
-        this.servicio = servicio;
-    }
-
-    public int getBuscarCodPlanContable() {
-        return buscarCodPlanContable;
-    }
-
-    public void setBuscarCodPlanContable(int buscarCodPlanContable) {
-        this.buscarCodPlanContable = buscarCodPlanContable;
-    }
-
-    public PlanContable buscarPlanContable() throws Exception {
-        PlanContable planContable = servicio.buscarPlanContable(this.buscarCodPlanContable);
-        //como hacer para llenar los inputs con los datos que trae la consulta. ¿Seria limpiar las variables actuales?
-        return planContable;
     }
 
     public LibroDiario getLibroDiario() {
