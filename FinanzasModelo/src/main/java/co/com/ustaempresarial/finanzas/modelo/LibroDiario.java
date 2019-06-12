@@ -15,8 +15,8 @@ import java.util.Date;
 public class LibroDiario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	public static final String LISTARLibroDiario = "LibroDiario.LISTAR_LIBRO_DIARIO";
-	public static final String LISTARLibroDiarioBYNAME = "LibroDiario.LISTARBYNAME";
+	public static final String LISTAR_LIBRO_DIARIO = "LibroDiario.LISTAR_LIBRO_DIARIO";
+	public static final String LISTAR_LIBRO_DIARIO_BY_NAME = "LibroDiario.LISTARBYNAME";
 
 
 	@Id

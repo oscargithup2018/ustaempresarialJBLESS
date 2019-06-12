@@ -14,8 +14,8 @@ import java.util.Date;
 public class PlanContable implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	public static final String LISTAR_PLANCONTABLE = "PlanContable.LISTAR_PLANCONTABLE";
-	public static final String LISTAR_PLANCONTABLE_BYNAME = "PlanContable.LISTAR_PLANCONTABLE_BYNAME";
+	public static final String LISTAR_PLAN_CONTABLE = "PlanContable.LISTAR_PLAN_CONTABLE";
+	public static final String LISTAR_PLAN_CONTABLE_BY_NAME = "PlanContable.LISTAR_PLAN_CONTABLE_BY_NAME";
 	
 	@Id
 	//@GeneratedValue(strategy=GenerationType.IDENTITY)
