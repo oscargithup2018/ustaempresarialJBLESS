@@ -48,7 +48,7 @@ public class FinanzasBean implements FinanzasFachada {
 	@Override
 	public List<LibroDiario> listarLibroDiario() throws Exception {
 		List<LibroDiario> libroDiario = new ArrayList<LibroDiario>();
-		Query q = em.createNamedQuery(LibroDiario.LISTARLibroDiario);
+		Query q = em.createNamedQuery(LibroDiario.LISTAR_LIBRO_DIARIO);
 		libroDiario = q.getResultList();
 		if (libroDiario.size() <= 0) {
 			libroDiario = null;
@@ -56,46 +56,11 @@ public class FinanzasBean implements FinanzasFachada {
 		return libroDiario;
 	}
 
-	/**
-	 * Metodo que busca libro diario por el nombre.
-	 *
-	 * @param Nombre del libro diario.
-	 * @return Objeto libroDiario con listado por nombre.
-	 * @throws Exception Capturar errores posibles sobre ejecución.
-	 */
-	@Override
-	public LibroDiario listalibroDiarioByNombre(String nombre) throws Exception {
-		LibroDiario objlibroDiario = new LibroDiario();
-		if (nombre != null && !nombre.equals("")) {
-			Query q = em.createNamedQuery(LibroDiario.LISTARLibroDiarioBYNAME).setParameter("nombre", nombre);
-			Object obj = q.getSingleResult();
-			objlibroDiario = (LibroDiario) obj;
-		}
-
-		return objlibroDiario;
-	}
-
-	/**
-	 * Metodo que busca libro diario por el nombre.
-	 *
-	 * @param nombre del libro diario.
-	 * @return Lista de los los libros diarios por nombre.
-	 * @throws Exception Capturar errores posibles sobre ejecución.
-	 */
-	@Override
-	public List<LibroDiario> listarLibroDiariosByNombre(String nombre) throws Exception {
-		List<LibroDiario> listLibroDiario = new ArrayList<>();
-		if (nombre != null && !nombre.equals("")) {
-			Query q = em.createNamedQuery(LibroDiario.LISTARLibroDiarioBYNAME).setParameter("nombre", nombre);
-			listLibroDiario = q.getResultList();
-		}
-		return listLibroDiario;
-	}
 
 	/**
 	 * Metodo que actualiza la LibroDiario producto.
 	 *
-	 * @param libroDiario.
+	 * @param libroDiario
 	 * @return Objeto libroDiario.
 	 * @throws Exception Capturar errores posibles sobre ejecución.
 	 */
@@ -163,7 +128,7 @@ public class FinanzasBean implements FinanzasFachada {
 	/**
 	 * Metodo que crea los libros mayores.
 	 *
-	 * @param libroMayor.
+	 * @param libroMayor
 	 * @throws Exception Capturar errores posibles sobre ejecución.
 	 */
 	@Override
@@ -306,6 +271,7 @@ public class FinanzasBean implements FinanzasFachada {
 		return retorno;
 	}
 
+
 	/**
 	 * Metodo que lista los periodos.
 	 *
@@ -314,7 +280,7 @@ public class FinanzasBean implements FinanzasFachada {
 	 */
 	public List<Periodo> listarPeriodo() throws Exception {
 		List<Periodo> periodo = new ArrayList<Periodo>();
-		Query q = em.createNamedQuery(Periodo.LISTARPERIODO);
+		Query q = em.createNamedQuery(Periodo.LISTAR_PERIODO);
 		periodo = q.getResultList();
 		if (periodo.size() <= 0) {
 			periodo = null;
@@ -322,22 +288,7 @@ public class FinanzasBean implements FinanzasFachada {
 		return periodo;
 	}
 
-	/**
-	 * Metodo que lista los periodos por su nombre.
-	 *
-	 * @param Nombre del periodo.
-	 * @return Objeto objPeriodo con el listdo de periodos.
-	 * @throws Exception Capturar errores posibles sobre ejecución.
-	 */
-	public Periodo listarPeriodoPorNombre(String nombre) throws Exception {
-		Periodo objPeriodo = new Periodo();
-		if (nombre != null && !nombre.equals("")) {
-			Query q = em.createNamedQuery(Periodo.LISTARPERIODOBYNAME).setParameter("nombre", nombre);
-			Object obj = q.getSingleResult();
-			objPeriodo = (Periodo) obj;
-		}
-		return objPeriodo;
-	}
+
 
 	/**
 	 * Metodo que busca el concepto por su codigo.
@@ -409,7 +360,7 @@ public class FinanzasBean implements FinanzasFachada {
 	 */
 	public List<Concepto> listarConcepto() throws Exception {
 		List<Concepto> concepto;
-		Query q = em.createNamedQuery(Concepto.LISTARCONCEPTO);
+		Query q = em.createNamedQuery(Concepto.LISTAR_CONCEPTO);
 		concepto = q.getResultList();
 		if (concepto.size() <= 0) {
 			concepto = null;
@@ -427,7 +378,7 @@ public class FinanzasBean implements FinanzasFachada {
 	public Concepto listarConceptoPorNombre(String nombre) throws Exception {
 		Concepto objConcepto = new Concepto();
 		if (nombre != null && !nombre.equals("")) {
-			Query q = em.createNamedQuery(Concepto.LISTARCONCEPTOBYNAME).setParameter("nombre", nombre);
+			Query q = em.createNamedQuery(Concepto.LISTAR_CONCEPTO_BY_NAME).setParameter("nombre", nombre);
 			Object obj = q.getSingleResult();
 			objConcepto = (Concepto) obj;
 		}

@@ -62,19 +62,6 @@ public class FinanzasServicio {
         return fachada.eliminarLibroDiario(cod);
     }
 
-
-    /**
-     * Metodo que busca LibroDiario del producto por nombre
-     *
-     * @param nombre del LibroDiario
-     * @return Objeto LibroDiario
-     * @throws Exception Capturar errores posibles osbre ejecuci�n
-     */
-    public List<LibroDiario> listarLibroDiariosByNombre(String nombre) throws Exception {
-        return fachada.listarLibroDiariosByNombre(nombre);
-    }
-
-
     /**
      * Metodo que lista los LibroMayor
      *
@@ -92,7 +79,7 @@ public class FinanzasServicio {
      * @param LibroMayor
      * @throws Exception Capturar errores posibles osbre ejecuci�n
      */
-    public void crearLibroMayorr(LibroMayor LibroMayor) throws Exception {
+    public void crearLibroMayor(LibroMayor LibroMayor) throws Exception {
         fachada.crearLibroMayor(LibroMayor);
     }
 
@@ -175,18 +162,6 @@ public class FinanzasServicio {
      */
     public List<Periodo> listarPeriodo() throws Exception {
         return fachada.listarPeriodo();
-    }
-
-
-    /**
-     * Metodo que busca Periodo por nombre
-     *
-     * @param nombre del Periodo
-     * @return Objeto Periodo
-     * @throws Exception Capturar errores posibles sobre ejecucion
-     */
-    public Periodo listarPeriodoPorNombre(String nombre) throws Exception {
-        return fachada.listarPeriodoPorNombre(nombre);
     }
 
 

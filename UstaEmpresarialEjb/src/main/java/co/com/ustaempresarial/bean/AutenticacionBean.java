@@ -35,7 +35,7 @@ public class AutenticacionBean implements AutenticacionFachada{
 		 Query q = em.createNamedQuery(UsuarioLogin.TRAER_USUARIO);
 		 q.setParameter("usua", us);
 		 q.setParameter("pass", clave);
-		
+
 		try {
 			login = (UsuarioLogin) q.getSingleResult();
 		} catch (NoResultException  e) {

@@ -1,5 +1,5 @@
 # GitIgnore List
-#-----
+
 # Java specific files
 *.class
 *.log

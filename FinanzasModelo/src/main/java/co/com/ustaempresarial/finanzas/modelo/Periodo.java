@@ -15,7 +15,6 @@ public class Periodo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	public static final String LISTAR_PERIODO = "Periodo.LISTAR_PERIODO";
-	public static final String LISTAR_PERIODO_BY_NAME = "Periodo.LISTAR_PERIODO_BY_NAME";
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

@@ -59,7 +59,7 @@ public class LoginControl implements Serializable {
 			String usaux= (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(AUTH_KEY);
 			if(usaux==null||usaux.compareTo("")==0){
 				try {
-//					usuarioLogin = autenticacionServicio.consultarUsuario(user, pass);
+					usuarioLogin = autenticacionServicio.consultarUsuario(user, pass);
 					if(usuarioLogin!=null) {
 						FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(AUTH_KEY,user);
 						login="/pages/comun/principal.faces";

@@ -1,87 +1,86 @@
 package co.com.ustaempresarial.finanzas.modelo;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 
 /**
  * The persistent class for the plan_contable database table.
- * 
  */
 @Entity
-@Table(name="plan_contable", schema="finanzas")
+@Table(name = "plan_contable", schema = "finanzas")
 public class PlanContable implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
-	public static final String LISTAR_PLAN_CONTABLE = "PlanContable.LISTAR_PLAN_CONTABLE";
-	public static final String LISTAR_PLAN_CONTABLE_BY_NAME = "PlanContable.LISTAR_PLAN_CONTABLE_BY_NAME";
-	
-	@Id
-	//@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer codigo;
+    private static final long serialVersionUID = 1L;
 
-	@Column(name="codigo_padre")
-	private Integer codigoPadre;
+    public static final String LISTAR_PLANCONTABLE = "PlanContable.LISTAR_PLANCONTABLE";
+    public static final String LISTAR_PLANCONTABLE_BYNAME = "PlanContable.LISTAR_PLANCONTABLE_BYNAME";
 
-	private String descripcion;
+    @Id
+    //@GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer codigo;
 
-	private String nombre;
+    @Column(name = "codigo_padre")
+    private Integer codigoPadre;
 
-	private Integer tipo;
+    private String descripcion;
 
-	@Temporal(TemporalType.DATE)
-	private Date vigencia;
+    private String nombre;
 
-	public PlanContable() {
-	}
+    private Integer tipo;
 
-	public Integer getCodigo() {
-		return this.codigo;
-	}
+    @Temporal(TemporalType.DATE)
+    private Date vigencia;
 
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
+    public PlanContable() {
+    }
 
-	public Integer getCodigoPadre() {
-		return this.codigoPadre;
-	}
+    public Integer getCodigo() {
+        return this.codigo;
+    }
 
-	public void setCodigoPadre(Integer codigoPadre) {
-		this.codigoPadre = codigoPadre;
-	}
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
 
-	public String getDescripcion() {
-		return this.descripcion;
-	}
+    public Integer getCodigoPadre() {
+        return this.codigoPadre;
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    public void setCodigoPadre(Integer codigoPadre) {
+        this.codigoPadre = codigoPadre;
+    }
 
-	public String getNombre() {
-		return this.nombre;
-	}
+    public String getDescripcion() {
+        return this.descripcion;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-	public Integer getTipo() {
-		return this.tipo;
-	}
+    public String getNombre() {
+        return this.nombre;
+    }
 
-	public void setTipo(Integer tipo) {
-		this.tipo = tipo;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public Date getVigencia() {
-		return this.vigencia;
-	}
+    public Integer getTipo() {
+        return this.tipo;
+    }
 
-	public void setVigencia(Date vigencia) {
-		this.vigencia = vigencia;
-	}
+    public void setTipo(Integer tipo) {
+        this.tipo = tipo;
+    }
+
+    public Date getVigencia() {
+        return this.vigencia;
+    }
+
+    public void setVigencia(Date vigencia) {
+        this.vigencia = vigencia;
+    }
 
 }

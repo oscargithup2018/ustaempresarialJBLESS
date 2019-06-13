@@ -42,24 +42,6 @@ public interface FinanzasFachada {
      */
     boolean eliminarLibroDiario(int codigo) throws Exception;
 
-    /**
-     * Metodo que busca LibroDiario  por nombre
-     *
-     * @param nombre de la categor�a
-     * @return Objeto categor�a
-     * @throws Exception Capturar errores posibles osbre ejecuci�n
-     */
-    LibroDiario listalibroDiarioByNombre(String nombre) throws Exception;
-
-    /**
-     * Metodo que busca LibroDiario  por nombre
-     *
-     * @param nombre de la categor�a
-     * @return Objeto categor�a
-     * @throws Exception Capturar errores posibles osbre ejecuci�n
-     */
-    List<LibroDiario> listarLibroDiariosByNombre(String nombre) throws Exception;
-
 
     /**
      * Metodo que lista los LibroMayors
@@ -138,14 +120,7 @@ public interface FinanzasFachada {
      */
     boolean eliminarPeriodo(int codigo) throws Exception;
 
-    /**
-     * Metodo que busca Periodo por nombre
-     *
-     * @param nombre del Periodo
-     * @return Objeto Periodo
-     * @throws Exception Capturar errores posibles sobre ejecicion
-     */
-    Periodo listarPeriodoPorNombre(String nombre) throws Exception;
+
 
 
     /**
