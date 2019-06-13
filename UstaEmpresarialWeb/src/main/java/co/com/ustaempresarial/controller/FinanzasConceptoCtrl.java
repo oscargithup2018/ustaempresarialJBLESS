@@ -1,153 +1,128 @@
 package co.com.ustaempresarial.controller;
 
-import co.com.ustaempresarial.finanzas.modelo.PlanContable;
-import co.com.ustaempresarial.servicio.FinanzasServicio;
-
-import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@ManagedBean
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import co.com.ustaempresarial.finanzas.modelo.Concepto;
+import co.com.ustaempresarial.servicio.FinanzasServicio;
+
+@ManagedBean(name = "conceptoFinanzas")
 @SessionScoped
-//@ViewScoped
 public class FinanzasConceptoCtrl implements Serializable {
+	private Integer codigo;
+	private String nombre;
+	private String descripcion;
+	private boolean tipo;
+	private boolean estado;
+	private int codigoPlanContable;
+	private List<Concepto> conceptos;
+	private Concepto conceptoContable;
 
-    private static final long serialVersionUID = 1L;
+	@EJB
+	private FinanzasServicio servicio;
 
-    private Integer codigo;
-    private Integer codigoPadre;
-    private String descripcion;
-    private String nombre;
-    private Integer tipo;
-    private List<PlanContable> planContables;
-    private int buscarCodPlanContable;
+	public FinanzasConceptoCtrl() {
+		super();
+		conceptos = new ArrayList<Concepto>();
+		conceptoContable = new Concepto();
+	}
 
-    @Temporal(TemporalType.DATE)
-    private Date vigencia;
+	@PostConstruct
+	public void cargarConceptoPage() {
+		try {
+			conceptos = servicio.listarConcepto();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-    @EJB
-//    @ManagedProperty("#{finanzasService}")
-    private FinanzasServicio servicio;
+	}
 
-    public void crearPlanContable() {
-        try {
-            PlanContable planContable = new PlanContable();
-            planContable.setCodigo(codigo);
-            planContable.setCodigoPadre(codigoPadre);
-            planContable.setDescripcion(descripcion);
-            planContable.setNombre(nombre);
-            planContable.setTipo(tipo);
-            planContable.setVigencia(vigencia);
-            servicio.crearPlanContable(planContable);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+	public void crearConceptoContable() {
+		try {
+			if (codigo != 0 && nombre != null) {
+				conceptoContable.setCodigo(codigo);
+				conceptoContable.setNombre(nombre);
+				conceptoContable.setDescripcion(descripcion);
+				conceptoContable.setTipo(tipo);
+				conceptoContable.setEstado(estado);
+				conceptoContable.setPlanContableCodigo(codigoPlanContable);
+				servicio.crearConcepto(conceptoContable);
+			}
 
-    public void modificarPlanContable() {
-        try {
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+	public void modificarConceptoContable() {
+		try {
 
-    public void eliminarPlanContable() {
-        try {
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+	public void eliminarConceptoContable() {
+		try {
 
-    @PostConstruct
-    public void cargarPlanContablePage() throws Exception {
-        planContables = servicio.listarPlanContable();
-    }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-    public Integer getCodigo() {
-        return codigo;
-    }
+	public Integer getCodigo() {
+		return codigo;
+	}
 
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
-    }
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
 
-    public Integer getCodigoPadre() {
-        return codigoPadre;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public void setCodigoPadre(Integer codigoPadre) {
-        this.codigoPadre = codigoPadre;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+	public String getDescripcion() {
+		return descripcion;
+	}
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+	public void setDescripcion(String descricion) {
+		this.descripcion = descripcion;
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public boolean getTipo() {
+		return tipo;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public void setTipo(boolean tipo) {
+		this.tipo = tipo;
+	}
 
-    public Integer getTipo() {
-        return tipo;
-    }
+	public int getCodigoPlanContable() {
+		return codigoPlanContable;
+	}
 
-    public void setTipo(Integer tipo) {
-        this.tipo = tipo;
-    }
+	public void setCodigoPlanContable(int codigoPlanContable) {
+		this.codigoPlanContable = codigoPlanContable;
+	}
 
-    public Date getVigencia() {
-        return vigencia;
-    }
+	public boolean getEstado() {
+		return estado;
+	}
 
-    public void setVigencia(String vigencia) {
-        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
-        Date fecha = null;
-        try {
-            fecha = formatoDelTexto.parse(vigencia);
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-        }
-        this.vigencia = fecha;
-    }
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
 
-    public List<PlanContable> getPlanContables() {
-        return planContables;
-    }
-
-    public void setService(FinanzasServicio servicio) {
-        this.servicio = servicio;
-    }
-
-    public int getBuscarCodPlanContable() {
-        return buscarCodPlanContable;
-    }
-
-    public void setBuscarCodPlanContable(int buscarCodPlanContable) {
-        this.buscarCodPlanContable = buscarCodPlanContable;
-    }
-
-    public PlanContable buscarPlanContable() throws Exception {
-        PlanContable planContable = servicio.buscarPlanContable(this.buscarCodPlanContable);
-        //como hacer para llenar los inputs con los datos que trae la consulta. ¿Seria limpiar las variables actuales?
-        return planContable;
-    }
 }

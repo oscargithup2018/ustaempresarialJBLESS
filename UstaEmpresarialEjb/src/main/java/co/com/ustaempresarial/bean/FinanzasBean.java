@@ -310,7 +310,7 @@ public class FinanzasBean implements FinanzasFachada {
 	 * @throws Exception Capturar errores posibles sobre ejecución.
 	 */
 	public void crearConcepto(Concepto concepto) throws Exception {
-		if (concepto.getCodigo() != null) {
+		if (concepto != null) {
 			em.persist(concepto);
 			em.flush();
 		}

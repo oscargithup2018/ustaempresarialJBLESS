@@ -127,7 +127,7 @@ public interface FinanzasFachada {
      * Metodo que lista los Concepto
      *
      * @return List<Concepto> Lista de los Concepto
-     * @throws Exception Capturar errores posibles sobre ejecicion
+     * @throws Exception Capturar errores posibles sobre ejecucion
      */
     List<Concepto> listarConcepto() throws Exception;
 
