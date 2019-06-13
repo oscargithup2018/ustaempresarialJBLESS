@@ -73,4 +73,10 @@
             WHERE p.nombre like '%:nombre%'
         </query>
     </named-query>
+    <named-query name="LogCuenta.LISTAR__LOGCUENTA">
+        <query>
+            SELECT l.descripcion_cuenta_nueva,l.nombre_cuenta_nueva,l.tipo_cuenta_nueva,i.vigencia_cuenta_nueva
+            FROM LogCuenta l
+        </query>
+    </named-query>
 </entity-mappings>

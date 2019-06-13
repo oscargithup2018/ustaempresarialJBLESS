@@ -569,5 +569,17 @@ public class FinanzasBean implements FinanzasFachada {
         return objPlanContable;
     }
 
+	@Override
+	public List<LogCuenta> listarLogCuentas() throws Exception {
+		
+      List<LogCuenta> objLogCuentas =  new ArrayList<LogCuenta>();
+          Query q = em.createNamedQuery(LogCuenta.LISTAR_LOGCUENTA);
+          Object obj = q.getResultList();     
+      return objLogCuentas;
+
+	}
+
+
+
 
 }

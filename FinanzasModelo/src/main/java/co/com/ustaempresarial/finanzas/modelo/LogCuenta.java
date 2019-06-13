@@ -13,6 +13,7 @@ import java.util.Date;
 @Table(name="\"log_cuentas\"", schema = "\"finanzas\"", catalog = "\"usta_empresarial\"")
 public class LogCuenta implements Serializable {
 	private static final long serialVersionUID = 1L;
+	public static final String LISTAR_LOGCUENTA = "LogCuenta.LISTAR__LOGCUENTA";
 
 	@Id
 	@Column(name="codigo_cuenta_nueva")

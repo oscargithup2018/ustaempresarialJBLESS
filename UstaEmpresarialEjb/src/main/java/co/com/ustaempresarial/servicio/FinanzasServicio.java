@@ -326,6 +326,12 @@ public class FinanzasServicio {
     public PlanContable buscarPlanContable(int codigo) throws Exception {
         return fachada.buscarPlanContable(codigo);
     }
-
+    
+    
+   public List<LogCuenta> listarLogCuentas() throws Exception {
+	   
+	   return fachada.listarLogCuentas();
+	   
+   }
 
 }

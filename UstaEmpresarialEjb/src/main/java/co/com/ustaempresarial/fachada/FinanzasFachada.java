@@ -260,6 +260,14 @@ public interface FinanzasFachada {
      * @throws Exception
      */
     PlanContable buscarPlanContable(int codigo) throws Exception;
+    
+    /**
+     * Lista los registros del logCuentas
 
+     * @return
+     * @throws Exception
+     */
+    List<LogCuenta> listarLogCuentas() throws Exception;
+    
 
 }

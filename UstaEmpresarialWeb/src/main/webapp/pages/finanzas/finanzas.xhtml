@@ -261,7 +261,38 @@
                         <!--                        <p:commandButton value="#{msg.botonEditar}" action="" icon="ui-icon-extlink"/>-->
                     </p:tab>
                     <p:tab title="#{msg.tabLogCuentas}">
+                             <p:dataTable id="listLogs" var="listado" value="#{lo }">
+                            <p:column headerText="codPadrePeriodo">
+                                <h:outputText value="#{listadoLd.periodoCod}"/>
+                            </p:column>
+
+                            <p:column headerText="Descripción">
+                                <h:outputText value="#{listado.de}"/>
+                            </p:column>
+
+                            <p:column headerText="asiento">
+                                <h:outputText value="#{listadoLd.asiento}"/>
+                            </p:column>
+
+                            <p:column headerText="fecha">
+                                <h:outputText value="#{listadoLd.fecha}"/>
+                            </p:column>
+
+                            <p:column headerText="valor">
+                                <h:outputText value="#{listadoLd.valor}"/>
+                            </p:column>
+
+                            <p:column headerText="estado">
+                                <h:outputText value="#{listadoLd.estado}"/>
+                            </p:column>
+                        </p:dataTable>
+                        <!--                        <p:commandButton value="#{msg.botonCrear}" action="" icon="ui-icon-extlink"/>-->
+                        <!--                        <p:commandButton value="#{msg.botonEditar}" action="" icon="ui-icon-extlink"/>-->
                     </p:tab>
+                    
+                    
+                    
+                 
                 </p:tabView>
             </h:form>
         </h:body>

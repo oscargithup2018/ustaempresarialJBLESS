@@ -1,5 +1,6 @@
 package co.com.ustaempresarial.controller;
 
+import co.com.ustaempresarial.finanzas.modelo.LogCuenta;
 import co.com.ustaempresarial.finanzas.modelo.PlanContable;
 import co.com.ustaempresarial.servicio.FinanzasServicio;
 
@@ -13,140 +14,92 @@ import javax.persistence.TemporalType;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
-@ManagedBean
+@ManagedBean(name="LogCuentasFinanzas")
 @SessionScoped
 public class FinanzasLogCuentasCtrl implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer codigo;
-    private Integer codigoPadre;
-    private String descripcion;
-    private String nombre;
-    private Integer tipo;
-    private List<PlanContable> planContables;
+//    private Integer codigo;
+//    private Integer codigoPadre;
+//    private String descripcion;
+//    private String nombre;
+//    private Integer tipo;
+    private List<LogCuenta> logCuentas;
     private int buscarCodPlanContable;
+    private Properties properties;
 
     @Temporal(TemporalType.DATE)
     private Date vigencia;
 
     @EJB
-//    @ManagedProperty("#{finanzasService}")
     private FinanzasServicio servicio;
 
-    public void crearPlanContable() {
-        try {
-            PlanContable planContable = new PlanContable();
-            planContable.setCodigo(codigo);
-            planContable.setCodigoPadre(codigoPadre);
-            planContable.setDescripcion(descripcion);
-            planContable.setNombre(nombre);
-            planContable.setTipo(tipo);
-            planContable.setVigencia(vigencia);
-            servicio.crearPlanContable(planContable);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void modificarPlanContable() {
-        try {
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void eliminarPlanContable() {
-        try {
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public FinanzasLogCuentasCtrl() throws Exception {
+        super();
+        properties = new Properties();
+        properties.load(LoginControl.class.getResourceAsStream("mensajes.properties"));
     }
 
     @PostConstruct
-    public void init() throws Exception {
-        planContables = servicio.listarPlanContable();
-    }
-
-    public Integer getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
-    }
-
-    public Integer getCodigoPadre() {
-        return codigoPadre;
-    }
-
-    public void setCodigoPadre(Integer codigoPadre) {
-        this.codigoPadre = codigoPadre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Integer getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(Integer tipo) {
-        this.tipo = tipo;
-    }
-
-    public Date getVigencia() {
-        return vigencia;
-    }
-
-    public void setVigencia(String vigencia) {
-        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
-        Date fecha = null;
+    public void cargarPlanContablePage() {
         try {
-            fecha = formatoDelTexto.parse(vigencia);
-        } catch (ParseException ex) {
-            ex.printStackTrace();
+            logCuentas = new ArrayList<LogCuenta>();
+            logCuentas = servicio.listarLogCuentas();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        this.vigencia = fecha;
     }
 
-    public List<PlanContable> getPlanContables() {
-        return planContables;
-    }
+	public List<LogCuenta> getLogCuentas() {
+		return logCuentas;
+	}
 
-    public void setService(FinanzasServicio servicio) {
-        this.servicio = servicio;
-    }
+	public void setLogCuentas(List<LogCuenta> logCuentas) {
+		this.logCuentas = logCuentas;
+	}
 
-    public int getBuscarCodPlanContable() {
-        return buscarCodPlanContable;
-    }
+	public int getBuscarCodPlanContable() {
+		return buscarCodPlanContable;
+	}
 
-    public void setBuscarCodPlanContable(int buscarCodPlanContable) {
-        this.buscarCodPlanContable = buscarCodPlanContable;
-    }
+	public void setBuscarCodPlanContable(int buscarCodPlanContable) {
+		this.buscarCodPlanContable = buscarCodPlanContable;
+	}
 
-    public PlanContable buscarPlanContable() throws Exception {
-        PlanContable planContable = servicio.buscarPlanContable(this.buscarCodPlanContable);
-        //como hacer para llenar los inputs con los datos que trae la consulta. ¿Seria limpiar las variables actuales?
-        return planContable;
-    }
+	public Properties getProperties() {
+		return properties;
+	}
+
+	public void setProperties(Properties properties) {
+		this.properties = properties;
+	}
+
+	public Date getVigencia() {
+		return vigencia;
+	}
+
+	public void setVigencia(Date vigencia) {
+		this.vigencia = vigencia;
+	}
+
+	public FinanzasServicio getServicio() {
+		return servicio;
+	}
+
+	public void setServicio(FinanzasServicio servicio) {
+		this.servicio = servicio;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+    
+    
+
 }
