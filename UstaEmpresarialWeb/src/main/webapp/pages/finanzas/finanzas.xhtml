@@ -262,32 +262,24 @@
                     </p:tab>
                     <p:tab title="#{msg.tabLogCuentas}">
                              <p:dataTable id="listLogs" var="listado" value="#{lo }">
-                            <p:column headerText="codPadrePeriodo">
-                                <h:outputText value="#{listadoLd.periodoCod}"/>
-                            </p:column>
+                           
 
+                            <p:column headerText="nombre">
+                                <h:outputText value="#{listado.nombre_cuenta_nueva}"/>
+                            </p:column>
                             <p:column headerText="Descripción">
-                                <h:outputText value="#{listado.de}"/>
+                                <h:outputText value="#{listado.descripcion_cuenta_nueva}"/>
                             </p:column>
 
-                            <p:column headerText="asiento">
-                                <h:outputText value="#{listadoLd.asiento}"/>
+                            <p:column headerText="Tipo">
+                                <h:outputText value="#{listado.tipo_cuenta_nueva}"/>
                             </p:column>
 
-                            <p:column headerText="fecha">
-                                <h:outputText value="#{listadoLd.fecha}"/>
+                            <p:column headerText="vigencia">
+                                <h:outputText value="#{listado.vigencia_cuenta_nueva}"/>
                             </p:column>
 
-                            <p:column headerText="valor">
-                                <h:outputText value="#{listadoLd.valor}"/>
-                            </p:column>
-
-                            <p:column headerText="estado">
-                                <h:outputText value="#{listadoLd.estado}"/>
-                            </p:column>
                         </p:dataTable>
-                        <!--                        <p:commandButton value="#{msg.botonCrear}" action="" icon="ui-icon-extlink"/>-->
-                        <!--                        <p:commandButton value="#{msg.botonEditar}" action="" icon="ui-icon-extlink"/>-->
                     </p:tab>
                     
                     
